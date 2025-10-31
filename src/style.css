@@ -315,7 +315,6 @@ a {
 }
 
 .hero-image-wrapper {
-  @apply h-[400px] md:h-full;
   top: 0;
   left: 0;
   width: 100%;
@@ -653,11 +652,6 @@ a {
   color: var(--color-gray-3);
 }
 
-/* Amenity Sections */
-.amenity-section-container {
-  margin-top: 40px;
-}
-
 .amenity-title {
   font-size: var(--text-sm);
   color: var(--color-gray-1);
@@ -679,10 +673,8 @@ a {
   flex-direction: column;
   justify-content: space-between;
   padding: var(--spacing-md) 40px;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   border: 1px solid var(--color-gray-2);
   border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-md);
   flex-wrap: wrap;
   gap: var(--spacing-md);
 }
@@ -701,6 +693,7 @@ a {
 .pricing-label {
   font-size: var(--text-sm);
   line-height: 1.2;
+  font-weight: 500;
   color: var(--color-gray-1);
   text-transform: capitalize;
 }

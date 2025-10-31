@@ -103,12 +103,12 @@
     <main class="section-space-y">
       <!-- Hero Section -->
       <section class="hero-accommodations" role="main">
-        <div class="hero-image-wrapper static md:absolute">
+        <div class="hero-image-wrapper h-[400px] md:h-full static md:absolute">
           <img
             src="images/main-bg-2.png"
             alt="Beautiful log cabin at Kebler Corner"
             class="hero-bg-image hidden-mobile"
-            style="object-fit: contain"
+            style="object-fit: cover"
           />
           <img
             src="images/hero-cabin-bg-mobile.png"
@@ -331,8 +331,10 @@
 
               <!-- Cabin Details -->
               <div class="cabin-details-card">
-                <div class="cabin-details-card-left w-full max-md:order-2">
-                  <div class="cabin-details-header hidden-mobile">
+                <div
+                  class="cabin-details-card-left hidden-mobile w-full max-md:order-2"
+                >
+                  <div class="cabin-details-header">
                     <div class="cabin-details-header-left">
                       <h2 class="cabin-title">
                         RV Sites – Full Hook-Up and Electric Only
@@ -340,7 +342,7 @@
                     </div>
                   </div>
 
-                  <p class="cabin-description-text hidden-mobile">
+                  <p class="cabin-description-text">
                     The Marcellina Cabin — the most luxurious log cabin at
                     Kebler Corner. Perfect for families or friends, it features
                     a full kitchen with bar, spacious living room, washer &
@@ -360,7 +362,7 @@
                     </span>
                   </div>
 
-                  <div class="amenity-section-container">
+                  <div class="mt-5 md:mt-10">
                     <!-- Kitchen Essentials -->
                     <div class="amenity-section">
                       <p class="amenity-text">
@@ -395,11 +397,11 @@
             </div>
           </div>
 
-          <div class="container">
-            <div class="cabin-listing-layout">
+          <div class="container overflow-hidden">
+            <div class="cabin-listing-layout gap-0!">
               <div></div>
               <!-- RV Sites Image Slider -->
-              <div class="@container mt-15 md:mt-30">
+              <div class="@container mt-10 md:mt-30">
                 <div>
                   <!-- Horizontal Slider Navigation -->
                   <div class="flex justify-between items-center gap-5">
@@ -1008,7 +1010,7 @@
 
       <section class="policy" role="region" aria-labelledby="policy-title">
         <div class="md:h-[950px]" style="position: relative">
-          <div class="hero-image-wrapper absolute">
+          <div class="hero-image-wrapper h-[400px] md:h-full absolute">
             <div
               style="
                 position: absolute;
