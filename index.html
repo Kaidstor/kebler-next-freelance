@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Kebler Corner - Mountain Cabin Rentals | Experience Adventure and
+      Tranquility
+    </title>
+    <meta
+      name="description"
+      content="Discover Kebler Corner cabin rentals between two alpine wilderness areas. Perfect for families and couples seeking mountain adventures with full amenities."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Header Navigation -->
+    <header class="header" role="banner">
+      <nav class="nav-container" role="navigation" aria-label="Main Navigation">
+        <!-- Logo placeholder -->
+        <div class="logo">
+          <img
+            src="images/logo.svg"
+            alt="Kebler Corner Logo"
+            class="logo-image h-[20px] md:h-[50px]"
+          />
+        </div>
+
+        <!-- Navigation Menu -->
+        <ul class="nav-menu">
+          <li class="nav-item has-dropdown">
+            <a href="#accommodations" class="nav-link active">Accommodations</a>
+            <div class="nav-dropdown">
+              <a href="#full-cabins" class="nav-dropdown-item">Full Cabins</a>
+              <a href="#rv-sites" class="nav-dropdown-item">RV Sites</a>
+              <a href="#campsites" class="nav-dropdown-item">Campsites</a>
+            </div>
+          </li>
+          <li><a href="#activities" class="nav-link">Activities</a></li>
+          <li><a href="#about" class="nav-link">About Us</a></li>
+          <li><a href="#contact" class="nav-link">Contact Us</a></li>
+          <li>
+            <a href="#gift-certificates" class="nav-link">Gift Certificates</a>
+          </li>
+        </ul>
+
+        <!-- Book Now Button -->
+        <a href="#book" class="btn btn-primary nav-cta">Book now</a>
+
+        <!-- Hamburger Menu Button (Mobile) -->
+        <button
+          class="hamburger-menu"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <!-- Mobile Drawer Menu -->
+        <div class="mobile-drawer">
+          <ul class="mobile-nav-menu">
+            <li>
+              <a href="#accommodations" class="mobile-nav-link"
+                >Accommodations</a
+              >
+              <div class="mobile-nav-submenu">
+                <a href="#full-cabins" class="mobile-nav-sublink"
+                  >Full Cabins</a
+                >
+                <a href="#rv-sites" class="mobile-nav-sublink">RV Sites</a>
+                <a href="#campsites" class="mobile-nav-sublink">Campsites</a>
+              </div>
+            </li>
+            <li>
+              <a href="#activities" class="mobile-nav-link">Activities</a>
+            </li>
+            <li><a href="#about" class="mobile-nav-link">About Us</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact Us</a></li>
+            <li>
+              <a href="#gift-certificates" class="mobile-nav-link"
+                >Gift Certificates</a
+              >
+            </li>
+            <li>
+              <a href="#book" class="btn btn-primary mobile-nav-cta"
+                >Book now</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="section-space-y">
+      <!-- Hero Section -->
+      <section class="hero-accommodations" role="main">
+        <div class="hero-image-wrapper static md:absolute">
+          <img
+            src="images/hero-cabin-bg.png"
+            alt="Beautiful log cabin at Kebler Corner"
+            class="hero-bg-image hidden-mobile"
+            style="object-fit: contain"
+          />
+          <img
+            src="images/hero-cabin-bg-mobile.png"
+            alt="Beautiful log cabin at Kebler Corner"
+            class="hero-bg-image-mobile w-full h-full"
+            style="object-fit: cover; object-position: center"
+          />
+        </div>
+        <div class="hero-overlay-content flex flex-col md:flex-row">
+          <div class="relative">
+            <h1
+              class="hero-accommodations-title max-md:mt-xl max-md:text-2xl max-md:p-0 max-md:text-center"
+            >
+              ACCOMMODATIONS
+            </h1>
+          </div>
+          <div
+            class="relative mb-0 md:mb-[30px] md:ml-[70px] ml-0 max-md:mt-xs px-xs md:px-0"
+          >
+            <button
+              class="dropdown-toggle md:mb-lg"
+              aria-expanded="false"
+              aria-controls="cabin-types-menu"
+            >
+              <span class="dropdown-label text-green">CABINS</span>
+              <div
+                style="
+                  width: 40px;
+                  height: 40px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 50%;
+                  background-color: var(--color-green);
+                "
+              >
+                <svg
+                  class="dropdown-icon"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M7 10L12 15L17 10"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+            </button>
+            <div id="cabin-types-menu" class="dropdown-menu" hidden>
+              <a href="#full-cabins" class="dropdown-item">Full Cabins</a>
+              <a href="#rv-sites" class="dropdown-item">RV Sites</a>
+              <a href="#campsites" class="dropdown-item">Campsites</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cabin Listing Section -->
+      <section
+        id="cabin-listing"
+        class="cabin-listing"
+        role="region"
+        aria-labelledby="listing-title"
+      >
+        <div class="container">
+          <div class="cabin-listing-layout">
+            <!-- Left Sidebar - Cabin List -->
+            <aside class="cabin-sidebar">
+              <h3 class="sidebar-title">FULL CABINS</h3>
+              <ul class="cabin-menu">
+                <li class="cabin-menu-item active">THE LOG HOUSE</li>
+                <li class="cabin-menu-item">THE COTTAGE</li>
+                <li class="cabin-menu-item">MARCELLINA</li>
+                <li class="cabin-menu-item">DOC HOLLIDAY'S CABIN</li>
+                <li class="cabin-menu-item">WYATT'S CABIN</li>
+              </ul>
+            </aside>
+
+            <div class="cabin-listing-sidebar md:hidden">
+              <div class="flex items-center justify-between">
+                <button
+                  class="text-white bg-green size-[30px] rounded-full flex justify-center items-center"
+                >
+                  <svg
+                    width="9"
+                    height="14"
+                    viewBox="0 0 9 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.63268 0.713135L1.42578 6.81483L7.63268 12.9165"
+                      stroke="white"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </button>
+                <h3 class="text-xl text-semibold uppercase">FULL CABINS</h3>
+                <button
+                  class="text-white bg-green size-[30px] rounded-full flex justify-center items-center"
+                >
+                  <svg
+                    width="9"
+                    height="14"
+                    viewBox="0 0 9 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0.699354 0.713135L6.90625 6.81483L0.699354 12.9165"
+                      stroke="white"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="flex justify-center mt-md gap-[5px]">
+                <span class="size-2 rounded-full bg-green-50 active"></span>
+                <span class="size-2 rounded-full bg-green-50"></span>
+                <span class="size-2 rounded-full bg-green-50"></span>
+                <span class="size-2 rounded-full bg-green-50"></span>
+              </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="cabin-main-content">
+              <div class="cabin-details-card-mobile">
+                <div class="cabin-details-header">
+                  <div class="cabin-details-header-left">
+                    <h2 class="cabin-title">THE LOG HOUSE</h2>
+                    <span class="cabin-badge">2-night minimum</span>
+                  </div>
+                </div>
+
+                <p class="cabin-description-text">
+                  The Marcellina Cabin — the most luxurious log cabin at Kebler
+                  Corner. Perfect for families or friends, it features a full
+                  kitchen with bar, spacious living room, washer & dryer, and a
+                  private deck with mountain views.
+                </p>
+              </div>
+
+              <!-- Image Gallery -->
+              <div class="cabin-gallery @container">
+                <!-- Main Image -->
+                <div class="cabin-main-image" style="position: relative">
+                  <img
+                    src="images/cabins/marcellina.png"
+                    alt="Marcellina Cabin"
+                  />
+
+                  <!-- Thumbnail Gallery -->
+                  <div
+                    class="cabin-thumbnails-wrapper"
+                    style="
+                      position: absolute;
+                      top: var(--spacing-lg);
+                      left: var(--spacing-lg);
+                    "
+                  >
+                    <div class="cabin-thumbnails">
+                      <button class="thumbnail active">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 1"
+                        />
+                      </button>
+                      <button class="thumbnail">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 2"
+                        />
+                      </button>
+                      <button class="thumbnail">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 3"
+                        />
+                      </button>
+                      <button class="thumbnail">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 4"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Thumbnail Gallery -->
+                <div class="cabin-thumbnails-wrapper-mobile overflow-hidden">
+                  <div class="cabin-thumbnails">
+                    <button class="thumbnail active">
+                      <img
+                        src="images/cabins/marcellina.png"
+                        alt="Marcellina view 1"
+                      />
+                    </button>
+                    <button class="thumbnail">
+                      <img
+                        src="images/cabins/marcellina.png"
+                        alt="Marcellina view 2"
+                      />
+                    </button>
+                    <button class="thumbnail">
+                      <img
+                        src="images/cabins/marcellina.png"
+                        alt="Marcellina view 3"
+                      />
+                    </button>
+                    <button class="thumbnail">
+                      <img
+                        src="images/cabins/marcellina.png"
+                        alt="Marcellina view 4"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Cabin Details -->
+              <div class="cabin-details-card">
+                <div class="cabin-details-card-left max-md:order-2">
+                  <div class="cabin-details-header hidden-mobile">
+                    <div class="cabin-details-header-left">
+                      <h2 class="cabin-title">THE LOG HOUSE</h2>
+                      <span class="cabin-badge">2-night minimum</span>
+                    </div>
+                  </div>
+
+                  <p class="cabin-description-text hidden-mobile">
+                    The Marcellina Cabin — the most luxurious log cabin at
+                    Kebler Corner. Perfect for families or friends, it features
+                    a full kitchen with bar, spacious living room, washer &
+                    dryer, and a private deck with mountain views.
+                  </p>
+
+                  <!-- Pricing Card -->
+                  <div class="cabin-pricing-card max-md:order-1">
+                    <div class="pricing-left">
+                      <span class="pricing-label">Rates from</span>
+                      <div class="pricing-amount">
+                        <span class="price-number">
+                          <span class="text-xl font-medium text-green">$</span
+                          >525</span
+                        >
+                        <span class="price-period">/ night</span>
+                      </div>
+                    </div>
+                    <a href="#book" class="btn btn-primary btn-cabin-card"
+                      >BOOK NOW</a
+                    >
+                  </div>
+                </div>
+
+                <div class="cabin-details-card-right">
+                  <div class="flex items-center flex-wrap gap-[3px] md:gap-md">
+                    <span class="feature-icon-label">
+                      <img src="images/dog-icon.svg" alt="" />
+                      <p class="m-0">Pet Friendly</p>
+                    </span>
+                    <span class="feature-icon-label">
+                      <img src="images/bed-icon.svg" alt="" />
+                      <p class="m-0">
+                        Sleeps: <span class="text-green">6</span>
+                      </p>
+                    </span>
+                    <span class="feature-icon-label">
+                      <img src="images/bath-icon.svg" alt="" />
+                      <p class="m-0">
+                        Bathroom: <span class="text-green">1</span>
+                      </p>
+                    </span>
+                  </div>
+
+                  <div class="amenity-section-container">
+                    <!-- Kitchen Essentials -->
+                    <div class="amenity-section">
+                      <h4 class="amenity-title">Kitchen Essentials</h4>
+                      <p class="amenity-text">
+                        Dishwasher, microwave, toaster oven, full fridge and
+                        freezer, electric stove/oven, coffee pot, and bar top.
+                        All utensils, cookware and dinnerware provided.
+                      </p>
+                    </div>
+
+                    <div
+                      style="
+                        width: 100%;
+                        height: 1px;
+                        background-color: var(--color-gray-2);
+                        width: 72px;
+                        margin: var(--spacing-md) 0;
+                      "
+                    ></div>
+
+                    <!-- Additional Amenities -->
+                    <div class="amenity-section">
+                      <h4 class="amenity-title">Additional Amenities</h4>
+                      <p class="amenity-text">
+                        A living room area with large windows, wood burning
+                        stove and smart TV, dining table and bar seating, a
+                        large outdoor patio space with outdoor seating, propane
+                        grill, and fire pit. Access to campground WiFi.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Policy -->
+      <section class="policy" role="region" aria-labelledby="policy-title">
+        <div class="container grid grid-cols-4 gap-md policy-content">
+          <div
+            class="flex flex-col items-center justify-center p-10 border-gray-2 rounded-2xl md:h-[350px]"
+          >
+            <div
+              class="flex flex-col gap-5 items-start justify-between w-full h-full"
+            >
+              <p class="text-xl md:text-4xl text-semibold uppercase lh-1_2 m-0">
+                Check-In and Check-Out Times
+              </p>
+              <div>
+                <p class="text-sm md:text-lg text-medium m-0">
+                  Check-In:
+                  <span class="text-green text-semibold">3:30 PM</span>
+                </p>
+                <p class="text-sm md:text-lg text-medium m-0">
+                  Check-Out:
+                  <span class="text-green text-semibold">11:00 AM</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-span-3 p-2lg border-gray-2 rounded-2xl flex flex-col gap-5 items-start justify-between"
+          >
+            <p class="text-xl md:text-4xl text-semibold uppercase lh-1_2 m-0">
+              Cancellation Policy
+            </p>
+
+            <ul
+              class="text-medium text-sm md:text-lg space-y-sm ml-lg list-disc"
+            >
+              <li>
+                Please call or email us if you need to cancel a reservation.
+              </li>
+              <li>
+                Cancelation Fee – A cancelation fee of $15 will be applied to
+                any reservation that is canceled.
+              </li>
+              <li>
+                RV and Tent sites – 3+ day advanced notice is required for a
+                full refund (minus service fee) or forfeit the first-night
+                deposit.
+              </li>
+              <li>
+                Cabins – 10+ days advanced notice is required for a full refund
+                (minus service fee) or forfeit the first-night deposit.
+              </li>
+              <li>There are no refunds given for early departure.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="policy" role="region" aria-labelledby="policy-title">
+        <div class="md:h-[950px]" style="position: relative">
+          <div class="hero-image-wrapper absolute">
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 230px;
+                background: linear-gradient(
+                  to bottom,
+                  rgba(255, 255, 255, 1),
+                  rgba(255, 255, 255, 0)
+                );
+                z-index: 10;
+              "
+            ></div>
+            <img
+              src="images/map.png"
+              alt="Beautiful log cabin at Kebler Corner"
+              class="hero-bg-image hidden-mobile"
+              style="object-fit: contain; object-position: -8%"
+            />
+            <img
+              src="images/map-mobile.png"
+              alt="Beautiful log cabin at Kebler
+            Corner"
+              class="hero-bg-image"
+              style="height: 700px; object-position: 20% 75%"
+            />
+          </div>
+          <div
+            class="container h-full flex flex-col justify-start md:justify-end items-end"
+            style="position: relative; z-index: 20"
+          >
+            <div style="max-width: 500px; padding: 40px 0">
+              <h2 class="mb-xs md:mb-5 font-semibold text-xl md:text-2xl">
+                Experience adventure and tranquility
+              </h2>
+              <p style="line-height: 1.6; color: #555" class="max-md:text-xs">
+                Kebler Corner is uniquely located between two alpine wilderness
+                areas at the base of Kebler Pass on the
+                <a
+                  href="https://www.coloradodirectory.com/maps/westelk.html"
+                  style="
+                    color: var(--color-green);
+                    text-decoration: none;
+                    font-weight: 500;
+                    border-bottom: 1px solid var(--color-green);
+                  "
+                >
+                  West Elk Scenic Byway </a
+                >. Our facility is situated at the origin of the North Fork of
+                the Gunnison River and offers direct access to Anthracite Creek
+              </p>
+              <a
+                href="#learn-more"
+                class="btn btn-primary mt-5 md:mt-10 max-sm:w-full"
+                >Learn More</a
+              >
+            </div>
+
+            <div class="md:hidden min-h-[400px]"></div>
+
+            <div class="signup-card flex justify-between items-center w-full">
+              <h2
+                id="signup-title"
+                class="uppercase text-base md:text-2xl md:text-left"
+              >
+                Sign-Up to Receive Our Promotional Emails
+              </h2>
+              <form
+                class="signup-form max-md:w-full"
+                role="form"
+                aria-label="Email Newsletter Signup"
+              >
+                <div class="form-group">
+                  <label for="email" class="sr-only">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="E-mail"
+                    required
+                    aria-describedby="email-help"
+                    class="email-input py-md px-md md:px-lg"
+                  />
+                  <span id="email-help" class="sr-only"
+                    >Enter your email address to receive promotional
+                    emails</span
+                  >
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-primary w-full md:w-[270px] py-md px-lg"
+                >
+                  SUBMIT
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="testimonials"
+        role="region"
+        aria-labelledby="testimonials-title"
+      >
+        <div class="container">
+          <h2
+            id="testimonials-title"
+            class="text-xl md:text-4xl text-semibold uppercase lh-1_2 m-0"
+          >
+            what people say
+          </h2>
+
+          <div class="testimonial-card mt-md md:mt-xl">
+            <div class="quote-marks">
+              <span class="quote-start" aria-hidden="true">«</span>
+              <blockquote>
+                <p class="text-xs md:text-xl mb-xs md:mb-md">
+                  Kebler Corner is just magical. You really feel like you are
+                  getting back to Nature when you are here. The Kebler Corner
+                  team does a wonderful job of keeping the property safe and
+                  clean. For as remote as you feel here, it is actually just a
+                  hop, skip and jump to Crested Butte, Paonia or even Aspen.
+                </p>
+
+                <p class="text-xs md:text-xl">
+                  The river has great fishing, there are on-property hikes and
+                  hikes nearby. The reservoir is super close and the North Fork
+                  Valley has lots to offer in the way of you-pick orchards,
+                  wineries, food and good old fashioned family fun. We will be
+                  coming back as soon as we can!
+                </p>
+              </blockquote>
+              <span class="quote-end" aria-hidden="true">»</span>
+            </div>
+
+            <div class="flex justify-center">
+              <cite class="text-base md:text-xl">— Amy P</cite>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="faq" role="region" aria-labelledby="faq-title">
+        <div class="container">
+          <h2 id="faq-title" class="section-title text-xl md:text-4xl">FAQ</h2>
+
+          <div class="faq-list">
+            <div class="faq-item">
+              <h3 class="faq-question text-base md:text-2xl">
+                QUESTION #1
+                <button
+                  class="faq-toggle"
+                  aria-expanded="false"
+                  aria-controls="faq-answer-1"
+                >
+                  <span class="toggle-icon">+</span>
+                </button>
+              </h3>
+              <div id="faq-answer-1" class="faq-answer" aria-hidden="true">
+                <p>
+                  Kebler Corner is uniquely located between two alpine
+                  wilderness areas at the base of Kebler Pass on the West Elk
+                  Scenic Byway. Our facility is situated at the origin of the
+                  North Fork of the Gunnison River and offers direct access to
+                  Anthracite Creek
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <h3 class="faq-question text-base md:text-2xl">
+                QUESTION #2
+                <button
+                  class="faq-toggle"
+                  aria-expanded="false"
+                  aria-controls="faq-answer-2"
+                >
+                  <span class="toggle-icon">+</span>
+                </button>
+              </h3>
+              <div id="faq-answer-2" class="faq-answer" aria-hidden="true">
+                <p>
+                  Kebler Corner is uniquely located between two alpine
+                  wilderness areas at the base of Kebler Pass on the West Elk
+                  Scenic Byway. Our facility is situated at the origin of the
+                  North Fork of the Gunnison River and offers direct access to
+                  Anthracite Creek
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <h3 class="faq-question text-base md:text-2xl">
+                QUESTION #3
+                <button
+                  class="faq-toggle"
+                  aria-expanded="false"
+                  aria-controls="faq-answer-3"
+                >
+                  <span class="toggle-icon">+</span>
+                </button>
+              </h3>
+              <div id="faq-answer-3" class="faq-answer" aria-hidden="true">
+                <p>
+                  Kebler Corner is uniquely located between two alpine
+                  wilderness areas at the base of Kebler Pass on the West Elk
+                  Scenic Byway. Our facility is situated at the origin of the
+                  North Fork of the Gunnison River and offers direct access to
+                  Anthracite Creek
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <h3 class="faq-question text-base md:text-2xl">
+                QUESTION #4
+                <button
+                  class="faq-toggle"
+                  aria-expanded="false"
+                  aria-controls="faq-answer-4"
+                >
+                  <span class="toggle-icon">+</span>
+                </button>
+              </h3>
+              <div id="faq-answer-4" class="faq-answer" aria-hidden="true">
+                <p>
+                  Kebler Corner is uniquely located between two alpine
+                  wilderness areas at the base of Kebler Pass on the West Elk
+                  Scenic Byway. Our facility is situated at the origin of the
+                  North Fork of the Gunnison River and offers direct access to
+                  Anthracite Creek
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <h3 class="faq-question text-base md:text-2xl">
+                QUESTION #5
+                <button
+                  class="faq-toggle"
+                  aria-expanded="false"
+                  aria-controls="faq-answer-5"
+                >
+                  <span class="toggle-icon">+</span>
+                </button>
+              </h3>
+              <div id="faq-answer-5" class="faq-answer" aria-hidden="true">
+                <p>
+                  Kebler Corner is uniquely located between two alpine
+                  wilderness areas at the base of Kebler Pass on the West Elk
+                  Scenic Byway. Our facility is situated at the origin of the
+                  North Fork of the Gunnison River and offers direct access to
+                  Anthracite Creek
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Us Section -->
+      <section
+        id="contact"
+        class="contact-us"
+        role="region"
+        aria-labelledby="contact-title"
+      >
+        <div class="container">
+          <div class="contact-layout">
+            <!-- Contact Form -->
+            <div
+              class="contact-form-wrapper h-fit border-gray-2 md:col-span-7 order-2 @container"
+            >
+              <h3 class="contact-form-title">ASK YOUR QUESTION</h3>
+              <form class="contact-form" role="form" aria-label="Contact Form">
+                <div class="form-group">
+                  <label for="contact-name" class="sr-only">Name</label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    placeholder="Name"
+                    required
+                    class="form-input"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-phone" class="sr-only">Phone</label>
+                  <input
+                    type="tel"
+                    id="contact-phone"
+                    name="phone"
+                    placeholder="Phone"
+                    class="form-input"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-email" class="sr-only">Email</label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                    class="form-input"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-message" class="sr-only">Message</label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    placeholder="Message"
+                    rows="6"
+                    required
+                    class="form-textarea"
+                  ></textarea>
+                </div>
+
+                <div class="flex gap-lg max-md:flex-col">
+                  <div class="form-checkboxes flex-1">
+                    <label class="checkbox-label">
+                      <input type="checkbox" required />
+                      <span
+                        >I agree to the and
+                        <a
+                          href="https://secure.thinkreservations.com/keblercorner/reservations/terms-and-conditions"
+                          class="underline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >Terms & Conditions</a
+                        ></span
+                      >
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" />
+                      <span
+                        >Yes! Please send me occasional updates on promotions
+                        and specials</span
+                      >
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" />
+                      <span>I am interested in becoming a work-camper</span>
+                    </label>
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="btn btn-primary w-full md:w-[270px] py-md mt-auto"
+                  >
+                    submit
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info-wrapper md:col-span-5 order-1 md:order-2">
+              <h2 id="contact-title" class="uppercase text-xl md:text-4xl">
+                Contact us
+              </h2>
+              <!-- Contact Details -->
+              <div class="contact-details-grid md:mt-md">
+                <div class="contact-detail-item">
+                  <span class="contact-label">Phone</span>
+                  <a href="tel:9709295029" class="contact-link">970-929-5029</a>
+                </div>
+                <div class="contact-detail-item">
+                  <span class="contact-label">Email</span>
+                  <a href="mailto:info@keblercorner.com" class="contact-link"
+                    >info@keblercorner.com</a
+                  >
+                </div>
+                <div class="contact-detail-item contact-detail-full">
+                  <span class="contact-label">Address</span>
+                  <a
+                    href="https://maps.google.com/?q=30682+County+Road+12+Somerset,+CO+81434"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-link"
+                  >
+                    30682 County Road 12 Somerset, CO 81434
+                  </a>
+                </div>
+              </div>
+
+              <!-- Map -->
+              <div class="contact-map">
+                <img
+                  src="images/contact-map.png"
+                  alt="Map of Kebler Corner"
+                  class="w-full"
+                />
+              </div>
+
+              <!-- Store Hours Card -->
+              <div class="contact-card">
+                <div class="contact-info-item">
+                  <span class="contact-label">Season</span>
+                  <span class="contact-value">May — October</span>
+                </div>
+                <div class="contact-divider hidden-mobile"></div>
+                <div class="contact-divider-horizontal my-sm md:hidden"></div>
+                <div class="contact-info-item">
+                  <span class="contact-label">Open</span>
+                  <div class="contact-hours">
+                    <span class="contact-value">10:00 A.M. - 5:00 P.M.</span>
+                    <div class="contact-divider hidden-mobile"></div>
+                    <div
+                      class="contact-divider-horizontal my-xs md:hidden"
+                    ></div>
+                    <span class="contact-value">Wednesday — Closed</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Social Media Links -->
+              <div class="flex gap-md mt-xs md:mt-0">
+                <a href="#" aria-label="Follow us on Instagram">
+                  <img src="images/socials-0.svg" alt="Instagram" />
+                </a>
+                <a href="#" aria-label="Follow us on Facebook">
+                  <img src="images/socials-1.svg" alt="Facebook" />
+                </a>
+                <a href="#" aria-label="Follow us on Twitter">
+                  <img src="images/socials-2.svg" alt="Twitter" />
+                </a>
+                <a href="#" aria-label="Follow us on YouTube">
+                  <img src="images/socials-3.svg" alt="YouTube" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-content grid grid-cols-12">
+          <div class="col-span-10 flex flex-col items-center">
+            <div class="footer-logo">
+              <img
+                src="images/logo-big.svg"
+                alt="Kebler Corner"
+                class="logo-image"
+              />
+            </div>
+
+            <div class="footer-text mt-2lg">
+              <p class="uppercase text-gray-2">
+                ©
+                <a
+                  href="https://www.outdoorhospitality.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-gray-2 underline"
+                  >Outdoor Hospitality Solutions Inc</a
+                ><br />
+                2020. All Right Reserved.
+              </p>
+            </div>
+
+            <div class="footer-links mt-auto flex gap-3lg">
+              <a
+                href="https://www.keblercorner.com/privacy-policy"
+                class="text-gray-2 underline uppercase"
+                >Privacy policy</a
+              >
+              <a
+                href="https://www.keblercorner.com/terms-and-conditions"
+                class="text-gray-2 underline uppercase"
+                >Kebler corner terms & conditions</a
+              >
+              <a
+                href="https://www.keblercorner.com/liability-waiver"
+                class="text-gray-2 underline uppercase"
+                >Liability Waiver</a
+              >
+            </div>
+          </div>
+
+          <div class="col-span-2 flex flex-col max-md:mt-md">
+            <div class="flex flex-col gap-lg max-md:items-center">
+              <a href="#accommodations">Accommodations</a>
+              <a href="#activities">Activities</a>
+              <a href="#about">About Us</a>
+              <a href="#contact">Contacts Us</a>
+              <a href="#gift-certificates">Gift Certificates</a>
+            </div>
+
+            <button
+              class="btn btn-white py-md md:mt-2lg mt-10"
+              style="padding: var(--spacing-sm) var(--spacing-2xl)"
+            >
+              Book now
+            </button>
+
+            <!-- Social Media Links -->
+            <div class="social-links mt-xl max-md:justify-center">
+              <a
+                href="#"
+                class="social-link"
+                aria-label="Follow us on Instagram"
+              >
+                <img src="images/instagram.svg" alt="Instagram" />
+              </a>
+              <a
+                href="https://www.facebook.com/keblercorner"
+                class="social-link"
+                aria-label="Follow us on Facebook"
+              >
+                <img src="images/facebook.svg" alt="Facebook" />
+              </a>
+              <a href="#" class="social-link" aria-label="Follow us on Twitter">
+                <img src="images/twitter.svg" alt="Twitter" />
+              </a>
+              <a href="#" class="social-link" aria-label="Follow us on YouTube">
+                <img src="images/youtube.svg" alt="YouTube" />
+              </a>
+            </div>
+
+            <div class="footer-text-mobile sm:mt-2lg mt-20">
+              <p
+                class="text-xs md:text-base max-md:text-center uppercase text-gray-2"
+              >
+                ©
+                <a
+                  href="https://www.outdoorhospitality.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-gray-2 underline"
+                  >Outdoor Hospitality Solutions Inc</a
+                ><br />
+                2020. All Right Reserved.
+              </p>
+            </div>
+
+            <div
+              class="footer-links-mobile text-xs md:text-base mt-2lg md:mt-auto flex gap-2lg md:gap-3lg max-md:text-center"
+            >
+              <a
+                href="https://www.keblercorner.com/privacy-policy"
+                class="text-gray-2 underline uppercase"
+                >Privacy policy</a
+              >
+              <a
+                href="https://www.keblercorner.com/terms-and-conditions"
+                class="text-gray-2 underline uppercase"
+                >Kebler corner terms & conditions</a
+              >
+              <a
+                href="https://www.keblercorner.com/liability-waiver"
+                class="text-gray-2 underline uppercase"
+                >Liability Waiver</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
