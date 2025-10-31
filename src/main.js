@@ -286,6 +286,103 @@ document.addEventListener("DOMContentLoaded", () => {
     element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
     observer.observe(element);
   });
+
+  // =====================================================
+  // RV Sites Image Slider
+  // =====================================================
+
+  // Individual card image sliders (fade effect)
+  const imageSliders = document.querySelectorAll(".rv-image-slider");
+
+  imageSliders.forEach((slider) => {
+    const images = slider.querySelectorAll(".rv-image");
+    const prevBtn = slider.querySelector(".rv-prev-btn");
+    const nextBtn = slider.querySelector(".rv-next-btn");
+    let currentIndex = 0;
+
+    function showImage(index) {
+      // Remove active class from all images
+      images.forEach((img) => {
+        img.classList.remove("active");
+        img.style.opacity = "0";
+      });
+
+      // Add active class to current image
+      images[index].classList.add("active");
+      images[index].style.opacity = "1";
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    }
+
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        prevImage();
+      });
+
+      nextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        nextImage();
+      });
+    }
+  });
+
+  // Horizontal card slider
+  const rvSliderWrapper = document.querySelector(".rv-slider-wrapper");
+  const rvMainPrev = document.querySelector(".rv-main-prev");
+  const rvMainNext = document.querySelector(".rv-main-next");
+
+  if (rvSliderWrapper && rvMainPrev && rvMainNext) {
+    const cards = rvSliderWrapper.querySelectorAll(".rv-slider-card");
+    let currentSlide = 0;
+
+    function getCardsPerView() {
+      const width = window.innerWidth;
+      if (width >= 768) return 2; // md
+      return 1; // mobile
+    }
+
+    function updateSlider() {
+      const cardsPerView = getCardsPerView();
+      const cardWidth = cards[0].offsetWidth;
+      const gap = 20; // gap-5 = 20px
+      const offset = currentSlide * (cardWidth + gap);
+      rvSliderWrapper.style.transform = `translateX(-${offset}px)`;
+    }
+
+    function nextSlide() {
+      const cardsPerView = getCardsPerView();
+      const maxSlide = Math.max(0, cards.length - cardsPerView);
+      currentSlide = Math.min(currentSlide + 1, maxSlide);
+      updateSlider();
+    }
+
+    function prevSlide() {
+      currentSlide = Math.max(currentSlide - 1, 0);
+      updateSlider();
+    }
+
+    rvMainNext.addEventListener("click", nextSlide);
+    rvMainPrev.addEventListener("click", prevSlide);
+
+    // Update on window resize
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        currentSlide = 0;
+        updateSlider();
+      }, 250);
+    });
+  }
 });
 
 // =====================================================

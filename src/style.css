@@ -12,6 +12,10 @@
   /* Font Sizes */
   --text-4xl-2: 2.5rem; /* 40px */
 
+  /* Colors - Grays */
+  --color-gray-1: #999999;
+  --color-gray-2: #dddddd;
+  --color-gray-3: #666666;
   --color-green: #3d6d57;
   --color-green-50: #3d6d5750;
 
@@ -32,11 +36,6 @@
   --color-white-50: #ffffff50;
   --color-black: #353b37;
   --color-black-50: #353b3750;
-
-  /* Colors - Grays */
-  --color-gray-1: #999999;
-  --color-gray-2: #dddddd;
-  --color-gray-3: #666666;
 
   /* Typography */
   --font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -587,11 +586,9 @@ a {
 }
 
 .cabin-details-card-left {
-  @apply w-full md:w-[460px];
   display: flex;
   gap: var(--spacing-lg);
   flex-direction: column;
-  min-width: 460px;
 }
 
 .cabin-details-card-right {
@@ -674,7 +671,6 @@ a {
   line-height: 1.2;
   font-weight: 500;
   color: var(--color-black);
-  margin: 0;
 }
 
 /* Pricing Card */
@@ -1322,25 +1318,6 @@ body.drawer-open::before {
   }
 }
 
-/* =====================================================
-   Utility Classes
-   ===================================================== */
-.text-center {
-  text-align: center;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.mb-0 {
-  margin-bottom: 0 !important;
-}
-
-.mt-auto {
-  margin-top: auto;
-}
-
 .mt-md {
   margin-top: var(--spacing-md);
 }
@@ -1523,10 +1500,6 @@ body.drawer-open::before {
   border: 1px solid var(--color-gray-1);
 }
 
-.border-gray-2 {
-  border: 1px solid var(--color-gray-2);
-}
-
 .border-gray-3 {
   border: 1px solid var(--color-gray-3);
 }
@@ -1676,7 +1649,7 @@ body.drawer-open::before {
 }
 
 .contact-value {
-  font-size: var(--text-base);
+  @apply text-sm md:text-base;
   font-weight: 500;
   color: var(--color-black);
 }
