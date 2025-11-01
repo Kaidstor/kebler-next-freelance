@@ -3,12 +3,18 @@ import { resolve } from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import tailwindcss from "@tailwindcss/vite";
+import handlebars from "vite-plugin-handlebars";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default defineConfig({
-  plugins: [tailwindcss()],
+  plugins: [
+    tailwindcss(),
+    handlebars({
+      partialDirectory: resolve(__dirname, "templates"),
+    }),
+  ],
   server: {
     watch: {
       // следить за всеми html в корне
