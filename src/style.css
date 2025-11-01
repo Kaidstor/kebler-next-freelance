@@ -20,11 +20,11 @@
   --color-green-50: #3d6d5750;
 
   /* Custom spacing */
-  --spacing-2lg: 2rem;
   --spacing-xs: 0.625rem; /* 10px */
   --spacing-sm: 0.9375rem; /* 15px */
   --spacing-md: 1.25rem; /* 20px */
   --spacing-lg: 1.875rem; /* 30px */
+  --spacing-2lg: 2rem; /* 32px */
   --spacing-xl: 3.125rem; /* 50px */
   --spacing-2xl: 4rem; /* 64px */
   --spacing-3lg: 5rem; /* 80px */
@@ -159,6 +159,7 @@ a {
 }
 
 .btn-primary {
+  @apply h-[60px] px-15;
   background-color: var(--color-green);
   color: var(--color-white);
 }
@@ -925,18 +926,17 @@ blockquote {
 /* =====================================================
    Email Signup Section
    ===================================================== */
+.card {
+  @apply p-md md:p-10 border bg-white border-gray-2 rounded-2xl;
+}
+
 .email-signup {
   padding: var(--spacing-3xl) 0;
   background: linear-gradient(135deg, #f0f7f3 0%, #e8f4ec 100%);
 }
 
 .signup-card {
-  @apply p-md md:px-xl md:py-2lg;
   margin: 0 auto;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-gray-2);
-  border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-md);
   text-align: center;
 }
 
@@ -1309,22 +1309,6 @@ body.drawer-open::before {
   .form-group {
     width: 100%;
   }
-}
-
-.mt-md {
-  margin-top: var(--spacing-md);
-}
-
-.mt-2lg {
-  margin-top: var(--spacing-2lg);
-}
-
-.mt-xl {
-  margin-top: var(--spacing-xl);
-}
-
-.mt-2xl {
-  margin-top: var(--spacing-2xl);
 }
 
 /* =====================================================
