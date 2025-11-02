@@ -311,10 +311,8 @@ a {
    Hero Accommodations Section
    ===================================================== */
 .hero-accommodations {
+  @apply h-auto min-h-[500px] lg:h-[85vh] lg:min-h-[700px] lg:max-h-[715px];
   position: relative;
-  height: 85vh;
-  min-height: 700px;
-  max-height: 715px;
 }
 
 .hero-image-wrapper {
@@ -334,10 +332,9 @@ a {
 }
 
 .hero-overlay-content {
-  @apply md:items-end px-5;
+  @apply items-center lg:items-end px-5 mx-auto md:mt-5 lg:mt-0;
   height: 100%;
   max-width: var(--container-max-width);
-  margin: 0 auto;
   z-index: 2;
 }
 
@@ -368,7 +365,7 @@ a {
 }
 
 .hero-accommodations-title {
-  @apply text-3xl md:text-[64px] md:py-xs;
+  @apply text-3xl lg:text-[clamp(2rem,3.6cqw,4rem)]  2xl:text-[64px] md:py-xs max-md:mt-xl max-md:p-0 max-md:text-center lg:w-[45cqw];
   font-weight: 600;
   color: var(--color-black);
   text-transform: uppercase;
@@ -622,9 +619,7 @@ Flatpickr Calendar Customization
 }
 
 .cabin-listing-layout {
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  gap: var(--spacing-2xl);
+  @apply grid  gap-lg lg:gap-2xl lg:grid-cols-[250px_1fr];
 }
 
 /* Left Sidebar */
@@ -1346,17 +1341,6 @@ body.drawer-open::before {
     gap: var(--spacing-sm);
   }
 
-  /* Hero - Mobile */
-  .hero-accommodations {
-    height: auto;
-    min-height: 500px;
-  }
-
-  /* Cabin Listing - Mobile */
-  .cabin-listing-layout {
-    grid-template-columns: 1fr;
-  }
-
   .cabin-sidebar {
     position: relative;
     top: 0;
@@ -1369,10 +1353,6 @@ body.drawer-open::before {
   .cabin-main-image {
     min-height: 245px;
     height: 400px;
-  }
-
-  .cabin-listing-layout {
-    gap: var(--spacing-lg);
   }
 
   .cabin-main-content {
@@ -1637,9 +1617,9 @@ body.drawer-open::before {
    Contact Us Section
    ===================================================== */
 .contact-layout {
+  @apply xl:gap-3xl gap-xl;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: var(--spacing-3xl);
   margin-top: var(--spacing-2xl);
 }
 
@@ -1651,10 +1631,10 @@ body.drawer-open::before {
 }
 
 .contact-card {
+  @apply gap-md lg:gap-0;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0;
 }
 
 .contact-info-item {
@@ -1672,7 +1652,7 @@ body.drawer-open::before {
 }
 
 .contact-value {
-  @apply text-sm md:text-base;
+  @apply text-sm xl:text-base;
   font-weight: 500;
   color: var(--color-black);
 }
@@ -1721,7 +1701,7 @@ body.drawer-open::before {
 }
 
 .contact-link {
-  @apply text-base md:text-2xl;
+  @apply text-base md:text-lg xl:text-2xl;
   line-height: 1.2;
   font-weight: 600;
   color: var(--color-green);
@@ -1741,14 +1721,13 @@ body.drawer-open::before {
 }
 
 .contact-form-title {
-  font-size: var(--text-4xl);
+  @apply text-xl md:text-3xl xl:text-4xl mb-5 xl:mb-xl;
   font-weight: 600;
-  margin-bottom: var(--spacing-xl);
   color: var(--color-black);
 }
 
 .contact-form {
-  @apply flex flex-col md:gap-md gap-[5px];
+  @apply flex flex-col md:gap-xs xl:gap-md gap-[5px];
 }
 
 .form-row {
@@ -1827,7 +1806,7 @@ body.drawer-open::before {
 }
 
 .hero-bg-image-mobile {
-  display: none;
+  @apply block lg:hidden;
 }
 
 /* Responsive */
@@ -1885,14 +1864,6 @@ body.drawer-open::before {
     display: flex;
     gap: 25px;
     flex-direction: column;
-  }
-
-  .policy-content {
-    grid-template-columns: 1fr;
-  }
-
-  .policy-content > div {
-    grid-column: span 1;
   }
 
   .cabin-details-card-mobile {
@@ -1953,8 +1924,7 @@ body.drawer-open::before {
     display: flex;
   }
 
-  .footer-text-mobile,
-  .hero-bg-image-mobile {
+  .footer-text-mobile {
     display: block;
   }
 }

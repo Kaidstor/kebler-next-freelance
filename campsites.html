@@ -23,16 +23,13 @@
     <!-- Main Content -->
     <main class="section-space-y">
       <!-- Hero Section -->
-      <section
-        class="hero-accommodations min-h-[650px]! max-h-[650px]!"
-        role="main"
-      >
-        <div class="hero-image-wrapper static md:absolute">
+      <section class="hero-accommodations" role="main">
+        <div class="hero-image-wrapper h-[400px] lg:h-full static lg:absolute">
           <img
             src="images/campsites.png"
             alt="Beautiful log cabin at Kebler Corner"
             class="hero-bg-image hidden-mobile"
-            style="object-fit: cover"
+            style="object-fit: cover; object-position: center bottom"
           />
           <img
             src="images/hero-cabin-bg-mobile.png"
@@ -41,23 +38,19 @@
             style="object-fit: cover; object-position: center"
           />
         </div>
-        <div class="hero-overlay-content flex flex-col md:flex-row">
+        <div class="hero-overlay-content flex flex-col lg:flex-row @container">
           <div class="relative">
-            <h1
-              class="hero-accommodations-title max-md:mt-xl max-md:text-2xl max-md:p-0 max-md:text-center"
-            >
-              ACCOMMODATIONS
-            </h1>
+            <h1 class="hero-accommodations-title">ACCOMMODATIONS</h1>
           </div>
           <div
-            class="relative mb-0 md:mb-[30px] md:ml-[70px] ml-0 max-md:mt-xs px-xs md:px-0"
+            class="relative mb-0 max-lg:w-full lg:mb-[30px] lg:ml-[70px] ml-0 max-md:mt-xs px-xs lg:px-0"
           >
             <button
-              class="dropdown-toggle"
+              class="dropdown-toggle w-full"
               aria-expanded="false"
               aria-controls="cabin-types-menu"
             >
-              <span class="dropdown-label text-green">Campsites</span>
+              <span class="dropdown-label text-green uppercase">Campsites</span>
               <div
                 style="
                   width: 40px;
