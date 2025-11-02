@@ -749,7 +749,7 @@ Flatpickr Calendar Customization
 }
 
 .thumbnail:not(.active) img {
-  @apply md:p-xs;
+  @apply lg:p-xs;
   border: none;
 }
 
@@ -759,7 +759,7 @@ Flatpickr Calendar Customization
 }
 
 .thumbnail.active img {
-  @apply md:p-0;
+  @apply lg:p-0;
 }
 
 .thumbnail:hover {
@@ -1387,6 +1387,7 @@ body.drawer-open::before {
   }
 
   .cabin-gallery {
+    margin-top: var(--spacing-xs);
     flex-direction: column;
   }
 
