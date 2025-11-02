@@ -1,4 +1,6 @@
 import "./style.css";
+import flatpickr from "flatpickr";
+import "flatpickr/dist/flatpickr.min.css";
 
 /**
  * Kebler Corner - Main JavaScript
@@ -67,26 +69,226 @@ document.addEventListener("DOMContentLoaded", () => {
   // =====================================================
   // Hero Dropdown Functionality
   // =====================================================
-  const dropdownToggle = document.querySelector(".dropdown-toggle");
-  const dropdownMenu = document.querySelector(".dropdown-menu");
+  const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
 
-  if (dropdownToggle && dropdownMenu) {
-    dropdownToggle.addEventListener("click", () => {
-      const isExpanded =
-        dropdownToggle.getAttribute("aria-expanded") === "true";
-      dropdownToggle.setAttribute("aria-expanded", !isExpanded);
-      dropdownMenu.hidden = isExpanded;
-    });
+  dropdownToggles.forEach((dropdownToggle) => {
+    const dropdownId = dropdownToggle.getAttribute("aria-controls");
+    const dropdownMenu = document.getElementById(dropdownId);
 
-    // Close dropdown when clicking outside
-    document.addEventListener("click", (e) => {
+    if (dropdownToggle && dropdownMenu) {
+      dropdownToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isExpanded =
+          dropdownToggle.getAttribute("aria-expanded") === "true";
+        dropdownToggle.setAttribute("aria-expanded", !isExpanded);
+        dropdownMenu.hidden = isExpanded;
+      });
+
+      // Close dropdown when clicking on a dropdown item
+      const dropdownItems = dropdownMenu.querySelectorAll(".dropdown-item");
+      dropdownItems.forEach((item) => {
+        item.addEventListener("click", (e) => {
+          e.preventDefault();
+          const selectedText = item.textContent.trim();
+          const label = dropdownToggle.querySelector(".dropdown-label");
+          if (label) {
+            label.textContent = selectedText;
+          }
+          dropdownToggle.setAttribute("aria-expanded", "false");
+          dropdownMenu.hidden = true;
+        });
+      });
+    }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    dropdownToggles.forEach((dropdownToggle) => {
+      const dropdownId = dropdownToggle.getAttribute("aria-controls");
+      const dropdownMenu = document.getElementById(dropdownId);
+
       if (
+        dropdownMenu &&
         !dropdownToggle.contains(e.target) &&
         !dropdownMenu.contains(e.target)
       ) {
         dropdownToggle.setAttribute("aria-expanded", "false");
         dropdownMenu.hidden = true;
       }
+    });
+  });
+
+  // =====================================================
+  // Counter Input Functionality (Adults/Children)
+  // =====================================================
+  const counterInputs = document.querySelectorAll(".counter-input");
+
+  counterInputs.forEach((input) => {
+    const wrapper = input.closest("div");
+    const minusBtn = wrapper?.querySelector(".counter-btn-minus");
+    const plusBtn = wrapper?.querySelector(".counter-btn-plus");
+    const minValue = parseInt(input.getAttribute("min")) || 0;
+    const maxValue = parseInt(input.getAttribute("max")) || Infinity;
+
+    function updateValue(newValue) {
+      const numValue = parseInt(newValue) || 0;
+      const clampedValue = Math.max(0, Math.min(maxValue, numValue));
+
+      // Если значение равно 0, очищаем input чтобы показать placeholder
+      if (clampedValue === 0) {
+        input.value = "";
+        if (minusBtn) minusBtn.disabled = true;
+        if (plusBtn) plusBtn.disabled = false;
+      } else {
+        input.value = clampedValue;
+        // Update button states - минус активен всегда когда значение > 0
+        if (minusBtn) {
+          minusBtn.disabled = false;
+        }
+        if (plusBtn) {
+          plusBtn.disabled = clampedValue >= maxValue;
+        }
+      }
+    }
+
+    if (minusBtn) {
+      minusBtn.addEventListener("click", () => {
+        const currentValue = parseInt(input.value) || minValue;
+        if (currentValue > 0) {
+          // Уменьшаем на 1, если значение > 0
+          updateValue(currentValue - 1);
+        }
+      });
+    }
+
+    if (plusBtn) {
+      plusBtn.addEventListener("click", () => {
+        const currentValue = parseInt(input.value);
+        if (isNaN(currentValue) || currentValue === 0) {
+          // Если поле пустое или равно 0, устанавливаем минимальное значение или 1
+          const startValue = minValue === 0 ? 1 : minValue;
+          updateValue(startValue);
+        } else {
+          updateValue(currentValue + 1);
+        }
+      });
+    }
+
+    input.addEventListener("input", (e) => {
+      const value = e.target.value;
+      if (value === "" || value === "0") {
+        input.value = "";
+        if (minusBtn) minusBtn.disabled = true;
+        if (plusBtn) plusBtn.disabled = false;
+      } else {
+        const numValue = parseInt(value);
+        if (!isNaN(numValue)) {
+          if (numValue < minValue) {
+            // Если значение меньше минимума, устанавливаем минимум или 0
+            updateValue(minValue);
+          } else {
+            updateValue(value);
+          }
+        }
+      }
+    });
+
+    input.addEventListener("blur", () => {
+      const value = input.value;
+      if (!value || value === "" || value === "0") {
+        input.value = "";
+        if (minusBtn) minusBtn.disabled = true;
+        if (plusBtn) plusBtn.disabled = false;
+      } else {
+        const numValue = parseInt(value);
+        if (!isNaN(numValue)) {
+          if (numValue < minValue) {
+            updateValue(minValue);
+          } else {
+            updateValue(value);
+          }
+        }
+      }
+    });
+
+    // Initialize button states
+    if (input.value && parseInt(input.value) >= minValue) {
+      updateValue(input.value);
+    } else {
+      input.value = "";
+      if (minusBtn) minusBtn.disabled = true;
+      if (plusBtn) plusBtn.disabled = false;
+    }
+  });
+
+  // =====================================================
+  // Date Picker (Check In / Check Out)
+  // =====================================================
+  const checkInInput = document.getElementById("check-in-input");
+  const checkOutInput = document.getElementById("check-out-input");
+
+  if (checkInInput && checkOutInput) {
+    let checkInPicker;
+    let checkOutPicker;
+
+    // Инициализация календаря для Check In
+    checkInPicker = flatpickr(checkInInput, {
+      dateFormat: "Y-m-d",
+      minDate: "today",
+      onChange: function (selectedDates, dateStr) {
+        // При выборе Check In, обновляем минимальную дату для Check Out
+        if (checkOutPicker && selectedDates.length > 0) {
+          const nextDay = new Date(selectedDates[0]);
+          nextDay.setDate(nextDay.getDate() + 1);
+          checkOutPicker.set("minDate", nextDay);
+
+          // Если Check Out уже выбран и раньше Check In, очищаем его
+          if (checkOutPicker.selectedDates.length > 0) {
+            const checkOutDate = checkOutPicker.selectedDates[0];
+            if (checkOutDate <= selectedDates[0]) {
+              checkOutPicker.clear();
+            }
+          }
+        }
+      },
+      onClose: function (selectedDates, dateStr) {
+        // Можно добавить форматирование даты
+        if (dateStr) {
+          const date = new Date(dateStr);
+          const formattedDate = date.toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          });
+          checkInInput.value = formattedDate;
+        }
+      },
+    });
+
+    // Инициализация календаря для Check Out
+    checkOutPicker = flatpickr(checkOutInput, {
+      dateFormat: "Y-m-d",
+      minDate: "today",
+      onChange: function (selectedDates, dateStr) {
+        // При выборе Check Out, обновляем максимальную дату для Check In
+        if (checkInPicker && selectedDates.length > 0) {
+          const prevDay = new Date(selectedDates[0]);
+          prevDay.setDate(prevDay.getDate() - 1);
+          checkInPicker.set("maxDate", prevDay);
+        }
+      },
+      onClose: function (selectedDates, dateStr) {
+        // Можно добавить форматирование даты
+        if (dateStr) {
+          const date = new Date(dateStr);
+          const formattedDate = date.toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          });
+          checkOutInput.value = formattedDate;
+        }
+      },
     });
   }
 

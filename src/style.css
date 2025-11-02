@@ -12,6 +12,9 @@
   /* Font Sizes */
   --text-4xl-2: 2.5rem; /* 40px */
 
+  /* Colors - White */
+  --color-white-2: #fafafa;
+
   /* Colors - Grays */
   --color-gray-1: #999999;
   --color-gray-2: #dddddd;
@@ -105,7 +108,9 @@ body {
    Focus Styles - WCAG Compliance
    ===================================================== */
 *:focus-visible {
-  outline: 3px solid var(--color-green);
+  /* outline: 2px solid var(--color-green); */
+  outline: none;
+  border: 2px solid var(--color-green);
   outline-offset: 2px;
 }
 
@@ -424,7 +429,7 @@ a {
 
 .dropdown-menu {
   position: absolute;
-  bottom: calc(100% + 10px);
+  top: calc(100% + 10px);
   right: 0;
   background-color: var(--color-white);
   border: 1px solid var(--color-gray-2);
@@ -452,6 +457,164 @@ a {
 .dropdown-item:hover {
   background-color: #f0f7f3;
   color: var(--color-green);
+}
+
+/* =====================================================
+Flatpickr Calendar Customization
+   ===================================================== */
+.flatpickr-calendar {
+  @apply bg-white border border-gray-2 rounded-[30px]! shadow-lg p-[24px]!;
+  font-family: var(--font-primary);
+
+  & > .flatpickr-months {
+    @apply pb-4!;
+  }
+}
+
+.flatpickr-monthDropdown-months {
+  @apply appearance-none! hover:bg-transparent! cursor-auto! font-semibold!;
+}
+
+.flatpickr-months .flatpickr-month {
+  @apply h-[23px]!;
+}
+
+.flatpickr-current-month {
+  @apply text-sm! text-left! left-0! pt-0! h-auto!;
+
+  .numInputWrapper {
+    @apply bg-transparent!;
+
+    & > .arrowUp,
+    & > .arrowDown {
+      @apply hidden!;
+    }
+
+    input[type="number"] {
+      @apply appearance-none font-semibold!;
+      margin: 0 !important;
+    }
+  }
+}
+
+.flatpickr-month {
+  @apply text-black;
+}
+
+.flatpickr-weekdays {
+  @apply mb-sm pt-5 border-t-[0.8px] border-gray-2;
+}
+
+.flatpickr-innerContainer {
+  @apply @container;
+
+  .flatpickr-rContainer {
+    @apply w-full!;
+  }
+
+  .flatpickr-days {
+    @apply w-full!;
+
+    & > .dayContainer {
+      @apply min-w-auto! grid! grid-cols-7! w-full! place-items-center;
+
+      & > * {
+        @apply size-6! my-[7.5px]!;
+        line-height: 24px !important;
+      }
+    }
+  }
+}
+
+.flatpickr-weekday {
+  @apply text-[10px]! font-medium! text-gray-1! uppercase;
+}
+
+.flatpickr-day {
+  @apply text-sm! font-medium! border-none! hover:bg-green! hover:text-white! transition-colors;
+  height: 24px;
+  line-height: 24px;
+}
+
+.flatpickr-day.flatpickr-disabled {
+  @apply hover:bg-transparent! hover:text-gray-2!;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+  @apply bg-green! text-white!;
+}
+
+.flatpickr-day.selected.startRange + .endRange:not(.endRange),
+.flatpickr-day.startRange.startRange + .endRange:not(.endRange),
+.flatpickr-day.endRange.startRange + .endRange:not(.endRange) {
+  @apply bg-green! text-white!;
+}
+
+.flatpickr-day.today {
+  @apply border-2 border-green;
+}
+
+.flatpickr-day.today.selected {
+  @apply border-green bg-green text-white;
+}
+
+.flatpickr-day.disabled,
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+  @apply text-gray-300 cursor-not-allowed;
+}
+
+.flatpickr-day.inRange {
+  @apply bg-green-50 text-green;
+}
+
+.flatpickr-next-month {
+  @apply top-[18px]! right-[24px]!;
+}
+
+.flatpickr-prev-month {
+  @apply top-[18px]! right-[64px]!;
+  left: unset !important;
+}
+
+.flatpickr-prev-month,
+.flatpickr-next-month {
+  @apply text-gray-500 hover:text-green transition-colors;
+  position: relative;
+}
+
+.flatpickr-prev-month:hover,
+.flatpickr-next-month:hover {
+  @apply text-green;
+}
+
+.flatpickr-months .flatpickr-prev-month svg,
+.flatpickr-months .flatpickr-next-month svg {
+  display: none !important;
+}
+
+.flatpickr-prev-month::before,
+.flatpickr-next-month::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--color-green);
+  border-bottom: none;
+  border-right: none;
+  transform: rotate(-45deg);
+  transition: border-color var(--transition-base);
+}
+
+.flatpickr-next-month::before {
+  transform: rotate(135deg);
+}
+
+.flatpickr-prev-month:hover::before,
+.flatpickr-next-month:hover::before {
+  border-color: var(--color-green);
 }
 
 /* =====================================================
@@ -1937,4 +2100,12 @@ body.drawer-open::before {
 .checkbox-label input[type="checkbox"]:checked {
   background-color: var(--color-green, #3b82f6);
   border-color: var(--color-green, #3b82f6);
+}
+
+.pagination-dot {
+  border-radius: 50%;
+}
+
+.pagination-dot.active {
+  @apply size-10 flex items-center justify-center bg-green text-white;
 }

@@ -24,7 +24,10 @@
     <!-- Main Content -->
     <main class="section-space-y">
       <!-- Hero Section -->
-      <section class="hero-accommodations" role="main">
+      <section
+        class="hero-accommodations md:h-[650px]! md:min-h-[650px]!"
+        role="main"
+      >
         <div
           class="hero-image-wrapper h-[400px] md:h-[500px] static md:absolute"
         >
@@ -41,54 +44,193 @@
             style="object-fit: cover; object-position: center"
           />
         </div>
-        <div class="card">
-          <div class="relative">
-            <h1
-              class="hero-accommodations-title max-md:mt-xl max-md:text-2xl max-md:p-0 max-md:text-center"
-            >
-              ACCOMMODATIONS
-            </h1>
-          </div>
-          <div
-            class="relative mb-0 md:mb-[30px] md:ml-[70px] ml-0 max-md:mt-xs px-xs md:px-0"
-          >
-            <button
-              class="dropdown-toggle"
-              aria-expanded="false"
-              aria-controls="cabin-types-menu"
-            >
-              <span class="dropdown-label text-green">RV SITES</span>
-              <div
-                style="
-                  width: 40px;
-                  height: 40px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  border-radius: 50%;
-                  background-color: var(--color-green);
-                "
-              >
-                <svg
-                  class="dropdown-icon"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M7 10L12 15L17 10"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
+
+        <div class="container h-full flex items-end">
+          <div class="card bg-white z-10 w-full">
+            <div class="grid grid-cols-5 gap-10">
+              <div class="grid grid-cols-3 items-center gap-2 col-span-4">
+                <div class="relative">
+                  <button
+                    class="dropdown-toggle h-[60px] md:min-w-full!"
+                    aria-expanded="false"
+                    aria-controls="place-type-menu"
+                  >
+                    <span class="ml-[25px] text-gray-500">Place type</span>
+
+                    <div
+                      style="
+                        width: 40px;
+                        height: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 50%;
+                        background-color: var(--color-green);
+                      "
+                    >
+                      <svg
+                        class="dropdown-icon"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M7 10L12 15L17 10"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                    </div>
+                  </button>
+                  <div id="place-type-menu" class="dropdown-menu" hidden>
+                    <a href="#" class="dropdown-item">Select 1</a>
+                    <a href="#" class="dropdown-item">Select 2</a>
+                    <a href="#" class="dropdown-item">Select 3</a>
+                  </div>
+                </div>
+                <div class="relative min-w-full">
+                  <input
+                    type="text"
+                    id="check-in-input"
+                    placeholder="Check In"
+                    readonly
+                    class="w-full p-xs pl-[25px] h-[60px] bg-white border border-gray-2 rounded-2xl text-base cursor-pointer transition-colors"
                   />
-                </svg>
+                  <img
+                    src="images/calendar.svg"
+                    alt="Calendar icon"
+                    class="absolute right-xs top-[50%] -translate-y-[50%] size-10 pointer-events-none"
+                  />
+                </div>
+                <div class="relative min-w-full">
+                  <input
+                    type="text"
+                    id="check-out-input"
+                    placeholder="Check Out"
+                    readonly
+                    class="w-full p-xs pl-[25px] h-[60px] bg-white border border-gray-2 rounded-2xl text-base cursor-pointer hover:border-green transition-colors"
+                  />
+                  <img
+                    src="images/calendar.svg"
+                    alt="Calendar icon"
+                    class="absolute right-xs top-[50%] -translate-y-[50%] size-10 pointer-events-none"
+                  />
+                </div>
+                <div
+                  class="relative min-w-full h-[60px] flex items-center justify-between gap-md p-xs bg-white border border-gray-2 rounded-2xl"
+                >
+                  <button
+                    type="button"
+                    class="counter-btn-minus w-10 h-10 flex items-center justify-center rounded-full bg-green text-white border-none cursor-pointer transition-colors hover:opacity-95 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-2 disabled:hover:text-black"
+                    aria-label="Decrease adults"
+                  >
+                    <svg
+                      class="p-1"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5 12H19"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </button>
+                  <input
+                    type="number"
+                    id="adults-input"
+                    name="adults"
+                    min="1"
+                    max="12"
+                    value=""
+                    placeholder="Adults (18+)"
+                    class="counter-input flex-1 border-none! outline-none bg-transparent text-center text-base font-primary text-black px-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  />
+                  <button
+                    type="button"
+                    class="counter-btn-plus w-10 h-10 flex items-center justify-center rounded-full bg-green text-white border-none cursor-pointer transition-colors hover:opacity-95 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-2 disabled:hover:text-black"
+                    aria-label="Increase adults"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 5V19M5 12H19"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div
+                  class="relative min-w-full h-[60px] flex items-center justify-between gap-md p-xs bg-white border border-gray-2 rounded-2xl"
+                >
+                  <button
+                    type="button"
+                    class="counter-btn-minus w-10 h-10 flex items-center justify-center rounded-full bg-green text-white border-none cursor-pointer transition-colors hover:opacity-95 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-2 disabled:hover:text-black"
+                    aria-label="Decrease children"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5 12H19"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </button>
+                  <input
+                    type="number"
+                    id="children-input"
+                    name="children"
+                    min="0"
+                    max="9"
+                    value=""
+                    placeholder="Children (0-17)"
+                    class="counter-input flex-1 border-none! outline-none bg-transparent text-center text-base font-primary text-black px-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  />
+                  <button
+                    type="button"
+                    class="counter-btn-plus w-10 h-10 flex items-center justify-center rounded-full bg-green text-white border-none cursor-pointer transition-colors hover:opacity-95 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-2 disabled:hover:text-black"
+                    aria-label="Increase children"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 5V19M5 12H19"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </div>
-            </button>
-            <div id="cabin-types-menu" class="dropdown-menu" hidden>
-              <a href="#full-cabins" class="dropdown-item">Full Cabins</a>
-              <a href="#rv-sites" class="dropdown-item">RV Sites</a>
-              <a href="#campsites" class="dropdown-item">Campsites</a>
+              <div class="flex items-center">
+                <button class="btn btn-primary w-full">Search</button>
+              </div>
             </div>
           </div>
         </div>
@@ -97,21 +239,41 @@
       <!-- Cabin Listing Section -->
       <section
         id="cabin-listing"
-        class="cabin-listing"
+        class="cabin-listing mt-10!"
         role="region"
         aria-labelledby="listing-title"
       >
-        <div class="container">
-          <!-- Left Sidebar - Cabin List -->
-          <div class="cabin-listing-layout">
-            <aside class="cabin-sidebar">
-              <h3 class="sidebar-title">RV SITES</h3>
-            </aside>
-
-            <div class="cabin-listing-sidebar md:hidden">
-              <div class="flex items-center justify-center">
+        <div class="container space-y-10 md:space-y-md">
+          <div
+            class="w-full overflow-hidden p-5 border border-gray-2 h-fit rounded-2xl flex"
+          >
+            <div
+              class="rv-image-slider relative rounded-[30px] overflow-hidden w-full"
+            >
+              <div
+                class="rv-images relative min-h-[230px] sm:min-h-[300px] md:min-h-[400px] h-full"
+              >
+                <img
+                  src="images/rv-site-1.png"
+                  alt="RV Site 1 - Image 1"
+                  class="rv-image active absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+                />
+                <img
+                  src="images/cabins/cottage.png"
+                  alt="RV Site 1 - Image 2"
+                  class="rv-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                />
+                <img
+                  src="images/cabins/log-house.png"
+                  alt="RV Site 1 - Image 3"
+                  class="rv-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                />
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 flex justify-between items-center p-5"
+              >
                 <button
-                  class="text-white bg-green size-[30px] rounded-full hidden justify-center items-center"
+                  class="rv-prev-btn text-green bg-white size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
                 >
                   <svg
                     width="9"
@@ -122,14 +284,13 @@
                   >
                     <path
                       d="M7.63268 0.713135L1.42578 6.81483L7.63268 12.9165"
-                      stroke="white"
+                      stroke="currentColor"
                       stroke-width="2"
                     />
                   </svg>
                 </button>
-                <h3 class="text-xl text-semibold uppercase">FULL CABINS</h3>
                 <button
-                  class="text-white bg-green size-[30px] rounded-full hidden justify-center items-center"
+                  class="rv-next-btn text-green bg-white size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
                 >
                   <svg
                     width="9"
@@ -140,739 +301,611 @@
                   >
                     <path
                       d="M0.699354 0.713135L6.90625 6.81483L0.699354 12.9165"
-                      stroke="white"
+                      stroke="currentColor"
                       stroke-width="2"
                     />
                   </svg>
                 </button>
               </div>
-              <div class="justify-center mt-md gap-[5px] hidden">
-                <span class="size-2 rounded-full bg-green-50 active"></span>
-                <span class="size-2 rounded-full bg-green-50"></span>
-                <span class="size-2 rounded-full bg-green-50"></span>
-                <span class="size-2 rounded-full bg-green-50"></span>
-              </div>
             </div>
 
-            <!-- Main Content Area -->
-            <div class="cabin-main-content">
-              <div class="cabin-details-card-mobile">
-                <div class="cabin-details-header">
-                  <div class="cabin-details-header-left">
-                    <h2 class="cabin-title">
-                      RV Sites – Full Hook-Up and Electric Only
-                    </h2>
-                  </div>
-                </div>
+            <div
+              class="md:px-lg max-md:pb-lg max-md:pt-[25px] w-full flex flex-col"
+            >
+              <p class="text-base md:text-2xl font-semibold uppercase">
+                RV Site 2
+              </p>
 
-                <p class="cabin-description-text">
-                  We offer full hook-up and electric only RV sites to our guests
-                  who like to travel in their second home! Guests will have
-                  access to their own fire pit and picnic table, guest WiFi,
-                  community bathrooms with showers, covered pavilion, and views
-                  of Anthracite Creek. Pet friendly! A 6 person maximum applies
-                  per site.
-                </p>
-              </div>
-
-              <!-- Image Gallery -->
-              <div class="cabin-gallery @container">
-                <!-- Main Image -->
-                <div class="cabin-main-image" style="position: relative">
-                  <img
-                    src="images/cabins/marcellina.png"
-                    alt="Marcellina Cabin"
-                  />
-
-                  <!-- Thumbnail Gallery -->
-                  <div
-                    class="cabin-thumbnails-wrapper"
-                    style="
-                      position: absolute;
-                      top: var(--spacing-lg);
-                      left: var(--spacing-lg);
-                    "
-                  >
-                    <div class="cabin-thumbnails">
-                      <button class="thumbnail active">
-                        <img
-                          src="images/cabins/marcellina.png"
-                          alt="Marcellina view 1"
-                        />
-                      </button>
-                      <button class="thumbnail">
-                        <img
-                          src="images/cabins/marcellina.png"
-                          alt="Marcellina view 2"
-                        />
-                      </button>
-                      <button class="thumbnail">
-                        <img
-                          src="images/cabins/marcellina.png"
-                          alt="Marcellina view 3"
-                        />
-                      </button>
-                      <button class="thumbnail">
-                        <img
-                          src="images/cabins/marcellina.png"
-                          alt="Marcellina view 4"
-                        />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Thumbnail Gallery -->
-                <div class="cabin-thumbnails-wrapper-mobile overflow-hidden">
-                  <div class="cabin-thumbnails">
-                    <button class="thumbnail active">
-                      <img
-                        src="images/cabins/marcellina.png"
-                        alt="Marcellina view 1"
-                      />
-                    </button>
-                    <button class="thumbnail">
-                      <img
-                        src="images/cabins/marcellina.png"
-                        alt="Marcellina view 2"
-                      />
-                    </button>
-                    <button class="thumbnail">
-                      <img
-                        src="images/cabins/marcellina.png"
-                        alt="Marcellina view 3"
-                      />
-                    </button>
-                    <button class="thumbnail">
-                      <img
-                        src="images/cabins/marcellina.png"
-                        alt="Marcellina view 4"
-                      />
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Cabin Details -->
-              <div class="cabin-details-card">
-                <div
-                  class="cabin-details-card-left hidden-mobile w-full max-md:order-2"
+              <div class="flex md:hidden flex-col gap-1 max-md:pl-0 px-5 mt-sm">
+                <span class="contact-label">Location</span>
+                <span class="contact-value"
+                  >Riverside behind the general store</span
                 >
-                  <div class="cabin-details-header">
-                    <div class="cabin-details-header-left">
-                      <h2 class="cabin-title">
-                        RV Sites – Full Hook-Up and Electric Only
-                      </h2>
-                    </div>
-                  </div>
-
-                  <p class="cabin-description-text">
-                    The Marcellina Cabin — the most luxurious log cabin at
-                    Kebler Corner. Perfect for families or friends, it features
-                    a full kitchen with bar, spacious living room, washer &
-                    dryer, and a private deck with mountain views.
-                  </p>
-                </div>
-
-                <div class="cabin-details-card-right">
-                  <div class="flex items-center flex-wrap gap-[3px] md:gap-md">
-                    <span class="feature-icon-label">
-                      <img src="images/dog-icon.svg" alt="" />
-                      <p class="m-0">Pet Friendly</p>
-                    </span>
-                    <span class="feature-icon-label">
-                      <img src="images/bath-icon.svg" alt="" />
-                      <p class="m-0">Community Bathrooms</p>
-                    </span>
-                  </div>
-
-                  <div class="mt-5 md:mt-10">
-                    <!-- Kitchen Essentials -->
-                    <div class="amenity-section">
-                      <p class="amenity-text">
-                        For your safety, and the safety of your RV, pigtail
-                        electrical converters of any kind are NOT permitted. No
-                        exceptions. 
-                      </p>
-                    </div>
-
-                    <div
-                      style="
-                        width: 100%;
-                        height: 1px;
-                        background-color: var(--color-gray-2);
-                        width: 72px;
-                        margin: var(--spacing-md) 0;
-                      "
-                    ></div>
-
-                    <!-- Additional Amenities -->
-                    <div class="amenity-section">
-                      <p class="amenity-text">
-                        Tents are NOT permitted in RV sites.
-                      </p>
-                      <p class="amenity-text mt-[5px]">
-                        RV sites are reserved for RV’s only.
-                      </p>
-                    </div>
-                  </div>
-                </div>
               </div>
-            </div>
-          </div>
 
-          <div class="container overflow-hidden">
-            <div class="cabin-listing-layout gap-0!">
-              <div></div>
-              <!-- RV Sites Image Slider -->
-              <div class="@container mt-10 md:mt-30">
-                <div>
-                  <!-- Horizontal Slider Navigation -->
-                  <div class="flex justify-between items-center gap-5">
-                    <p class="text-xl md:text-4xl font-semibold uppercase">
-                      found offers
-                    </p>
-
-                    <div class="flex gap-sm">
-                      <button
-                        class="rv-main-prev text-white bg-green size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
-                      >
-                        <svg
-                          width="9"
-                          height="14"
-                          viewBox="0 0 9 14"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M7.63268 0.713135L1.42578 6.81483L7.63268 12.9165"
-                            stroke="white"
-                            stroke-width="2"
-                          />
-                        </svg>
-                      </button>
-                      <button
-                        class="rv-main-next text-white bg-green size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
-                      >
-                        <svg
-                          width="9"
-                          height="14"
-                          viewBox="0 0 9 14"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M0.699354 0.713135L6.90625 6.81483L0.699354 12.9165"
-                            stroke="white"
-                            stroke-width="2"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-
-                  <div
-                    class="rv-slider-wrapper flex gap-5 transition-transform duration-500 ease-in-out mt-5 md:mt-10"
+              <div
+                class="flex items-center divide-x [&>div]:border-gray-2 mt-sm"
+              >
+                <div class="hidden flex-col gap-1 md:flex px-5 pl-0">
+                  <span class="contact-label">Location</span>
+                  <span class="contact-value max-md:max-w-[160px]"
+                    >Riverside behind the general store</span
                   >
-                    <!-- Card 1 -->
-                    <div
-                      class="rv-slider-card min-w-full md:min-w-[calc(50%-10px)] rounded-2xl overflow-hidden p-5 border border-gray-2 h-fit"
+                </div>
+
+                <div class="flex flex-col gap-1 px-5">
+                  <span class="contact-label">Shade</span>
+                  <span class="contact-value max-w-[160px]">Partial</span>
+                </div>
+
+                <div class="flex flex-col gap-1 px-5">
+                  <span class="contact-label">Length Max</span>
+                  <span class="contact-value max-w-[160px]">40’</span>
+                </div>
+
+                <div class="flex flex-col gap-1 px-5 last:pr-0">
+                  <span class="contact-label">Сommunication</span>
+                  <span class="contact-value max-w-[160px]">Full Hook-Ups</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-2 mt-10 text-xs md:text-sm">
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Picnic Table</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Fire Ring</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Guest WiFi</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Access to 24/hour Community Bathrooms</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >30+50 Amp Power</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Water Hook-Up</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Sewer Hook-Up</span
+                >
+              </div>
+
+              <div class="flex-1 min-h-[60px]"></div>
+
+              <div
+                class="mt-5 md:mt-auto flex-col md:flex-row flex items-center justify-between max-md:gap-xs"
+              >
+                <div class="flex flex-col">
+                  <div class="flex gap-xs items-center">
+                    <span class="text-xl md:text-2xl line-through">
+                      $70.50</span
                     >
-                      <div class="relative">
-                        <div
-                          class="rv-image-slider relative rounded-[30px] overflow-hidden"
-                        >
-                          <div
-                            class="rv-images relative h-[230px] sm:h-[300px] md:h-[400px]"
-                          >
-                            <img
-                              src="images/rv-site-1.png"
-                              alt="RV Site 1 - Image 1"
-                              class="rv-image active absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
-                            />
-                            <img
-                              src="images/cabins/cottage.png"
-                              alt="RV Site 1 - Image 2"
-                              class="rv-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
-                            />
-                            <img
-                              src="images/cabins/log-house.png"
-                              alt="RV Site 1 - Image 3"
-                              class="rv-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
-                            />
-                          </div>
-                          <div
-                            class="absolute bottom-0 left-0 right-0 flex justify-between items-center p-5"
-                          >
-                            <button
-                              class="rv-prev-btn text-green bg-white size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
-                            >
-                              <svg
-                                width="9"
-                                height="14"
-                                viewBox="0 0 9 14"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M7.63268 0.713135L1.42578 6.81483L7.63268 12.9165"
-                                  stroke="currentColor"
-                                  stroke-width="2"
-                                />
-                              </svg>
-                            </button>
-                            <button
-                              class="rv-next-btn text-green bg-white size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
-                            >
-                              <svg
-                                width="9"
-                                height="14"
-                                viewBox="0 0 9 14"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M0.699354 0.713135L6.90625 6.81483L0.699354 12.9165"
-                                  stroke="currentColor"
-                                  stroke-width="2"
-                                />
-                              </svg>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
 
-                      <div class="md:px-lg pb-lg pt-[25px]">
-                        <p
-                          class="text-base md:text-2xl font-semibold uppercase"
-                        >
-                          RV Site 2
-                        </p>
-
-                        <div class="flex flex-col gap-1 mt-sm md:hidden">
-                          <span class="contact-label">Location</span>
-                          <span class="contact-value"
-                            >Riverside behind the general store</span
-                          >
-                        </div>
-
-                        <div
-                          class="flex items-center divide-x [&>div]:border-gray-2 mt-sm"
-                        >
-                          <div class="flex flex-col gap-1 px-5 pl-0">
-                            <span class="contact-label">Shade</span>
-                            <span class="contact-value max-w-[160px]"
-                              >Partial</span
-                            >
-                          </div>
-
-                          <div class="hidden md:flex flex-col gap-1 mt-sm pl-0">
-                            <span class="contact-label">Location</span>
-                            <span class="contact-value max-w-[160px]"
-                              >Riverside behind the general store</span
-                            >
-                          </div>
-
-                          <div class="flex flex-col gap-1 px-5">
-                            <span class="contact-label">Length Max</span>
-                            <span class="contact-value max-w-[160px]">40’</span>
-                          </div>
-
-                          <div class="flex flex-col gap-1 px-5 last:pr-0">
-                            <span class="contact-label">Сommunication</span>
-                            <span class="contact-value max-w-[160px]"
-                              >Full Hook-Ups</span
-                            >
-                          </div>
-                        </div>
-
-                        <div
-                          class="flex flex-wrap gap-2 mt-10 text-xs md:text-sm"
-                        >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Picnic Table</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Fire Ring</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Guest WiFi</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Access to 24/hour Community Bathrooms</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >30+50 Amp Power</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Water Hook-Up</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Sewer Hook-Up</span
-                          >
-                        </div>
-
-                        <div
-                          class="mt-5 md:mt-10 flex-col md:flex-row flex items-center justify-between max-md:gap-xs"
-                        >
-                          <div class="pricing-amount">
-                            <span class="price-number">
-                              <span class="text-xl font-medium text-green"
-                                >$</span
-                              >70</span
-                            >
-                            <span class="price-period">/ night</span>
-                          </div>
-                          <a
-                            href="#book"
-                            class="btn btn-primary w-full md:w-[210px] py-4 h-[60px]"
-                            >BOOK NOW</a
-                          >
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div
-                      class="rv-slider-card min-w-full md:min-w-[calc(50%-10px)] rounded-2xl overflow-hidden p-5 border border-gray-2 h-fit"
+                    <span
+                      class="text-white bg-green rounded-full px-md py-xs text-base md:text-xl leading-[1.2]"
+                      >10%</span
                     >
-                      <div class="relative">
-                        <div
-                          class="rv-image-slider relative rounded-[30px] overflow-hidden"
-                        >
-                          <div
-                            class="rv-images relative h-[230px] sm:h-[300px] md:h-[400px]"
-                          >
-                            <img
-                              src="images/rv-site-1.png"
-                              alt="RV Site 1 - Image 1"
-                              class="rv-image active absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
-                            />
-                            <img
-                              src="images/cabins/cottage.png"
-                              alt="RV Site 1 - Image 2"
-                              class="rv-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
-                            />
-                            <img
-                              src="images/cabins/log-house.png"
-                              alt="RV Site 1 - Image 3"
-                              class="rv-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
-                            />
-                          </div>
-                          <div
-                            class="absolute bottom-0 left-0 right-0 flex justify-between items-center p-5"
-                          >
-                            <button
-                              class="rv-prev-btn text-green bg-white size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
-                            >
-                              <svg
-                                width="9"
-                                height="14"
-                                viewBox="0 0 9 14"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M7.63268 0.713135L1.42578 6.81483L7.63268 12.9165"
-                                  stroke="currentColor"
-                                  stroke-width="2"
-                                />
-                              </svg>
-                            </button>
-                            <button
-                              class="rv-next-btn text-green bg-white size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
-                            >
-                              <svg
-                                width="9"
-                                height="14"
-                                viewBox="0 0 9 14"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M0.699354 0.713135L6.90625 6.81483L0.699354 12.9165"
-                                  stroke="currentColor"
-                                  stroke-width="2"
-                                />
-                              </svg>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
 
-                      <div class="md:px-lg pb-lg pt-[25px]">
-                        <p
-                          class="text-base md:text-2xl font-semibold uppercase"
-                        >
-                          RV Site 2
-                        </p>
+                    <p class="text-xs md:text-sm text-gray-1">
+                      Shoulder Night Discount 2025
+                    </p>
+                  </div>
 
-                        <div class="flex flex-col gap-1 mt-sm md:hidden">
-                          <span class="contact-label">Location</span>
-                          <span class="contact-value"
-                            >Riverside behind the general store</span
-                          >
-                        </div>
-
-                        <div
-                          class="flex items-center divide-x [&>div]:border-gray-2 mt-sm"
-                        >
-                          <div class="flex flex-col gap-1 px-5 pl-0">
-                            <span class="contact-label">Shade</span>
-                            <span class="contact-value max-w-[160px]"
-                              >Partial</span
-                            >
-                          </div>
-
-                          <div class="hidden md:flex flex-col gap-1 mt-sm pl-0">
-                            <span class="contact-label">Location</span>
-                            <span class="contact-value max-w-[160px]"
-                              >Riverside behind the general store</span
-                            >
-                          </div>
-
-                          <div class="flex flex-col gap-1 px-5">
-                            <span class="contact-label">Length Max</span>
-                            <span class="contact-value max-w-[160px]">40’</span>
-                          </div>
-
-                          <div class="flex flex-col gap-1 px-5 last:pr-0">
-                            <span class="contact-label">Сommunication</span>
-                            <span class="contact-value max-w-[160px]"
-                              >Full Hook-Ups</span
-                            >
-                          </div>
-                        </div>
-
-                        <div
-                          class="flex flex-wrap gap-2 mt-10 text-xs md:text-sm"
-                        >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Picnic Table</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Fire Ring</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Guest WiFi</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Access to 24/hour Community Bathrooms</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >30+50 Amp Power</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Water Hook-Up</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Sewer Hook-Up</span
-                          >
-                        </div>
-
-                        <div
-                          class="mt-5 md:mt-10 flex-col md:flex-row flex items-center justify-between max-md:gap-xs"
-                        >
-                          <div class="pricing-amount">
-                            <span class="price-number">
-                              <span class="text-xl font-medium text-green"
-                                >$</span
-                              >70</span
-                            >
-                            <span class="price-period">/ night</span>
-                          </div>
-                          <a
-                            href="#book"
-                            class="btn btn-primary w-full md:w-[210px] py-4 h-[60px]"
-                            >BOOK NOW</a
-                          >
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div
-                      class="rv-slider-card min-w-full md:min-w-[calc(50%-10px)] rounded-2xl overflow-hidden p-5 border border-gray-2 h-fit"
+                  <div class="pricing-amount">
+                    <span class="price-number">
+                      <span class="text-xl md:text-2xl font-medium text-green"
+                        >$</span
+                      >58.50</span
                     >
-                      <div class="relative">
-                        <div
-                          class="rv-image-slider relative rounded-[30px] overflow-hidden"
-                        >
-                          <div
-                            class="rv-images relative h-[230px] sm:h-[300px] md:h-[400px]"
-                          >
-                            <img
-                              src="images/rv-site-1.png"
-                              alt="RV Site 1 - Image 1"
-                              class="rv-image active absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
-                            />
-                            <img
-                              src="images/cabins/cottage.png"
-                              alt="RV Site 1 - Image 2"
-                              class="rv-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
-                            />
-                            <img
-                              src="images/cabins/log-house.png"
-                              alt="RV Site 1 - Image 3"
-                              class="rv-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
-                            />
-                          </div>
-                          <div
-                            class="absolute bottom-0 left-0 right-0 flex justify-between items-center p-5"
-                          >
-                            <button
-                              class="rv-prev-btn text-green bg-white size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
-                            >
-                              <svg
-                                width="9"
-                                height="14"
-                                viewBox="0 0 9 14"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M7.63268 0.713135L1.42578 6.81483L7.63268 12.9165"
-                                  stroke="currentColor"
-                                  stroke-width="2"
-                                />
-                              </svg>
-                            </button>
-                            <button
-                              class="rv-next-btn text-green bg-white size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
-                            >
-                              <svg
-                                width="9"
-                                height="14"
-                                viewBox="0 0 9 14"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M0.699354 0.713135L6.90625 6.81483L0.699354 12.9165"
-                                  stroke="currentColor"
-                                  stroke-width="2"
-                                />
-                              </svg>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+                    <span class="price-period">/ night</span>
+                  </div>
+                </div>
+                <div class="flex items-end h-full">
+                  <a
+                    href="#book"
+                    class="btn btn-primary w-full md:w-[210px] py-4 h-[60px]"
+                    >BOOK NOW</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
 
-                      <div class="md:px-lg pb-lg pt-[25px]">
-                        <p
-                          class="text-base md:text-2xl font-semibold uppercase"
-                        >
-                          RV Site 2
-                        </p>
+          <div
+            class="w-full overflow-hidden p-5 border border-gray-2 h-fit rounded-2xl flex"
+          >
+            <div
+              class="rv-image-slider relative rounded-[30px] overflow-hidden w-full"
+            >
+              <div
+                class="rv-images relative min-h-[230px] sm:min-h-[300px] md:min-h-[400px] h-full"
+              >
+                <img
+                  src="images/rv-site-1.png"
+                  alt="RV Site 1 - Image 1"
+                  class="rv-image active absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+                />
+                <img
+                  src="images/cabins/cottage.png"
+                  alt="RV Site 1 - Image 2"
+                  class="rv-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                />
+                <img
+                  src="images/cabins/log-house.png"
+                  alt="RV Site 1 - Image 3"
+                  class="rv-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                />
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 flex justify-between items-center p-5"
+              >
+                <button
+                  class="rv-prev-btn text-green bg-white size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
+                >
+                  <svg
+                    width="9"
+                    height="14"
+                    viewBox="0 0 9 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.63268 0.713135L1.42578 6.81483L7.63268 12.9165"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </button>
+                <button
+                  class="rv-next-btn text-green bg-white size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
+                >
+                  <svg
+                    width="9"
+                    height="14"
+                    viewBox="0 0 9 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0.699354 0.713135L6.90625 6.81483L0.699354 12.9165"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
 
-                        <div class="flex flex-col gap-1 mt-sm md:hidden">
-                          <span class="contact-label">Location</span>
-                          <span class="contact-value"
-                            >Riverside behind the general store</span
-                          >
-                        </div>
+            <div
+              class="md:px-lg max-md:pb-lg max-md:pt-[25px] w-full flex flex-col"
+            >
+              <p class="text-base md:text-2xl font-semibold uppercase">
+                RV Site 2
+              </p>
 
-                        <div
-                          class="flex items-center divide-x [&>div]:border-gray-2 mt-sm"
-                        >
-                          <div class="flex flex-col gap-1 px-5 pl-0">
-                            <span class="contact-label">Shade</span>
-                            <span class="contact-value max-w-[160px]"
-                              >Partial</span
-                            >
-                          </div>
+              <div class="flex md:hidden flex-col gap-1 max-md:pl-0 px-5 mt-sm">
+                <span class="contact-label">Location</span>
+                <span class="contact-value"
+                  >Riverside behind the general store</span
+                >
+              </div>
 
-                          <div class="hidden md:flex flex-col gap-1 mt-sm pl-0">
-                            <span class="contact-label">Location</span>
-                            <span class="contact-value max-w-[160px]"
-                              >Riverside behind the general store</span
-                            >
-                          </div>
+              <div
+                class="flex items-center divide-x [&>div]:border-gray-2 mt-sm"
+              >
+                <div class="hidden flex-col gap-1 md:flex px-5 pl-0">
+                  <span class="contact-label">Location</span>
+                  <span class="contact-value max-md:max-w-[160px]"
+                    >Riverside behind the general store</span
+                  >
+                </div>
 
-                          <div class="flex flex-col gap-1 px-5">
-                            <span class="contact-label">Length Max</span>
-                            <span class="contact-value max-w-[160px]">40’</span>
-                          </div>
+                <div class="flex flex-col gap-1 px-5">
+                  <span class="contact-label">Shade</span>
+                  <span class="contact-value max-w-[160px]">Partial</span>
+                </div>
 
-                          <div class="flex flex-col gap-1 px-5 last:pr-0">
-                            <span class="contact-label">Сommunication</span>
-                            <span class="contact-value max-w-[160px]"
-                              >Full Hook-Ups</span
-                            >
-                          </div>
-                        </div>
+                <div class="flex flex-col gap-1 px-5">
+                  <span class="contact-label">Length Max</span>
+                  <span class="contact-value max-w-[160px]">40’</span>
+                </div>
 
-                        <div
-                          class="flex flex-wrap gap-2 mt-10 text-xs md:text-sm"
-                        >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Picnic Table</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Fire Ring</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Guest WiFi</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Access to 24/hour Community Bathrooms</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >30+50 Amp Power</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Water Hook-Up</span
-                          >
-                          <span
-                            class="px-md py-xs rounded-full border border-green"
-                            >Sewer Hook-Up</span
-                          >
-                        </div>
+                <div class="flex flex-col gap-1 px-5 last:pr-0">
+                  <span class="contact-label">Сommunication</span>
+                  <span class="contact-value max-w-[160px]">Full Hook-Ups</span>
+                </div>
+              </div>
 
-                        <div
-                          class="mt-5 md:mt-10 flex-col md:flex-row flex items-center justify-between max-md:gap-xs"
-                        >
-                          <div class="pricing-amount">
-                            <span class="price-number">
-                              <span class="text-xl font-medium text-green"
-                                >$</span
-                              >70</span
-                            >
-                            <span class="price-period">/ night</span>
-                          </div>
-                          <a
-                            href="#book"
-                            class="btn btn-primary w-full md:w-[210px] py-4 h-[60px]"
-                            >BOOK NOW</a
-                          >
-                        </div>
-                      </div>
+              <div class="flex flex-wrap gap-2 mt-10 text-xs md:text-sm">
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Picnic Table</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Fire Ring</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Guest WiFi</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Access to 24/hour Community Bathrooms</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >30+50 Amp Power</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Water Hook-Up</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Sewer Hook-Up</span
+                >
+              </div>
+
+              <div class="flex-1 min-h-[60px]"></div>
+
+              <div
+                class="mt-5 md:mt-auto flex-col md:flex-row flex items-center justify-between max-md:gap-xs"
+              >
+                <div class="flex flex-col gap-xs">
+                  <div class="pricing-amount">
+                    <span class="price-number">
+                      <span class="text-xl md:text-2xl font-medium text-green"
+                        >$</span
+                      >70</span
+                    >
+                    <span class="price-period">/ night</span>
+                  </div>
+                </div>
+                <div class="flex items-end h-full">
+                  <a
+                    href="#book"
+                    class="btn btn-primary w-full md:w-[210px] py-4 h-[60px]"
+                    >BOOK NOW</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="w-full overflow-hidden p-5 border border-gray-2 h-fit rounded-2xl flex bg-white-2"
+          >
+            <div
+              class="rv-image-slider relative rounded-[30px] overflow-hidden w-full"
+            >
+              <div
+                class="rv-images relative min-h-[230px] sm:min-h-[300px] md:min-h-[400px] h-full"
+              >
+                <img
+                  src="images/rv-site-1.png"
+                  alt="RV Site 1 - Image 1"
+                  class="rv-image active absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+                />
+                <img
+                  src="images/cabins/cottage.png"
+                  alt="RV Site 1 - Image 2"
+                  class="rv-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                />
+                <img
+                  src="images/cabins/log-house.png"
+                  alt="RV Site 1 - Image 3"
+                  class="rv-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                />
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 flex justify-between items-center p-5"
+              >
+                <button
+                  class="rv-prev-btn text-green bg-white size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
+                >
+                  <svg
+                    width="9"
+                    height="14"
+                    viewBox="0 0 9 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.63268 0.713135L1.42578 6.81483L7.63268 12.9165"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </button>
+                <button
+                  class="rv-next-btn text-green bg-white size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
+                >
+                  <svg
+                    width="9"
+                    height="14"
+                    viewBox="0 0 9 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0.699354 0.713135L6.90625 6.81483L0.699354 12.9165"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="md:px-lg max-md:pb-lg max-md:pt-[25px] w-full flex flex-col"
+            >
+              <p class="text-base md:text-2xl font-semibold uppercase">
+                RV Site 2
+              </p>
+
+              <div class="flex md:hidden flex-col gap-1 max-md:pl-0 px-5 mt-sm">
+                <span class="contact-label">Location</span>
+                <span class="contact-value"
+                  >Riverside behind the general store</span
+                >
+              </div>
+
+              <div
+                class="flex items-center divide-x [&>div]:border-gray-2 mt-sm"
+              >
+                <div class="hidden flex-col gap-1 md:flex px-5 pl-0">
+                  <span class="contact-label">Location</span>
+                  <span class="contact-value max-md:max-w-[160px]"
+                    >Riverside behind the general store</span
+                  >
+                </div>
+
+                <div class="flex flex-col gap-1 px-5">
+                  <span class="contact-label">Shade</span>
+                  <span class="contact-value max-w-[160px]">Partial</span>
+                </div>
+
+                <div class="flex flex-col gap-1 px-5">
+                  <span class="contact-label">Length Max</span>
+                  <span class="contact-value max-w-[160px]">40’</span>
+                </div>
+
+                <div class="flex flex-col gap-1 px-5 last:pr-0">
+                  <span class="contact-label">Сommunication</span>
+                  <span class="contact-value max-w-[160px]">Full Hook-Ups</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-2 mt-10 text-xs md:text-sm">
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Picnic Table</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Fire Ring</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Guest WiFi</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Access to 24/hour Community Bathrooms</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >30+50 Amp Power</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Water Hook-Up</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Sewer Hook-Up</span
+                >
+              </div>
+
+              <div class="flex-1 min-h-[60px]"></div>
+
+              <div class="mt-5 md:mt-auto space-y-[5px]">
+                <div
+                  class="mt-5 md:mt-auto flex-col md:flex-row flex items-center justify-between max-md:gap-xs bg-white pl-lg pr-sm py-sm rounded-full border border-gray-2"
+                >
+                  <div class="flex flex-col items-start">
+                    <span class="pricing-label">Weekly Rate (RV Only)</span>
+                    <div class="pricing-amount">
+                      <span class="price-number">
+                        <span class="text-xl md:text-2xlfont-medium text-green"
+                          >$</span
+                        >45</span
+                      >
+                      <span class="price-period">/ night</span>
                     </div>
+                  </div>
+                  <div class="flex items-end h-full">
+                    <a
+                      href="#book"
+                      class="btn btn-primary w-full md:w-[210px] py-4 h-[60px]"
+                      >BOOK NOW</a
+                    >
+                  </div>
+                </div>
+
+                <div
+                  class="flex-col md:flex-row flex items-center justify-between max-md:gap-xs bg-white pl-lg pr-sm py-sm rounded-full border border-gray-2"
+                >
+                  <div class="flex flex-col items-start">
+                    <span class="pricing-label">RV Rate</span>
+                    <div class="pricing-amount">
+                      <span class="price-number">
+                        <span class="text-xl md:text-2xlfont-medium text-green"
+                          >$</span
+                        >45</span
+                      >
+                      <span class="price-period">/ night</span>
+                    </div>
+                  </div>
+                  <div class="flex items-end h-full">
+                    <a
+                      href="#book"
+                      class="btn btn-primary w-full md:w-[210px] py-4 h-[60px]"
+                      >BOOK NOW</a
+                    >
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <div
+            class="w-full overflow-hidden p-5 border border-gray-2 h-fit rounded-2xl flex"
+          >
+            <div
+              class="rv-image-slider relative rounded-[30px] overflow-hidden w-full"
+            >
+              <div
+                class="rv-images relative min-h-[230px] sm:min-h-[300px] md:min-h-[400px] h-full"
+              >
+                <img
+                  src="images/rv-site-1.png"
+                  alt="RV Site 1 - Image 1"
+                  class="rv-image active absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+                />
+                <img
+                  src="images/cabins/cottage.png"
+                  alt="RV Site 1 - Image 2"
+                  class="rv-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                />
+                <img
+                  src="images/cabins/log-house.png"
+                  alt="RV Site 1 - Image 3"
+                  class="rv-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                />
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 flex justify-between items-center p-5"
+              >
+                <button
+                  class="rv-prev-btn text-green bg-white size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
+                >
+                  <svg
+                    width="9"
+                    height="14"
+                    viewBox="0 0 9 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.63268 0.713135L1.42578 6.81483L7.63268 12.9165"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </button>
+                <button
+                  class="rv-next-btn text-green bg-white size-[40px] rounded-full flex justify-center items-center hover:bg-opacity-90 transition-all"
+                >
+                  <svg
+                    width="9"
+                    height="14"
+                    viewBox="0 0 9 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0.699354 0.713135L6.90625 6.81483L0.699354 12.9165"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="md:px-lg max-md:pb-lg max-md:pt-[25px] w-full flex flex-col"
+            >
+              <p class="text-base md:text-2xl font-semibold uppercase">
+                RV Site 2
+              </p>
+
+              <div class="flex md:hidden flex-col gap-1 max-md:pl-0 px-5 mt-sm">
+                <span class="contact-label">Location</span>
+                <span class="contact-value"
+                  >Riverside behind the general store</span
+                >
+              </div>
+
+              <div
+                class="flex items-center divide-x [&>div]:border-gray-2 mt-sm"
+              >
+                <div class="hidden flex-col gap-1 md:flex px-5 pl-0">
+                  <span class="contact-label">Location</span>
+                  <span class="contact-value max-md:max-w-[160px]"
+                    >Riverside behind the general store</span
+                  >
+                </div>
+
+                <div class="flex flex-col gap-1 px-5">
+                  <span class="contact-label">Shade</span>
+                  <span class="contact-value max-w-[160px]">Partial</span>
+                </div>
+
+                <div class="flex flex-col gap-1 px-5">
+                  <span class="contact-label">Length Max</span>
+                  <span class="contact-value max-w-[160px]">40’</span>
+                </div>
+
+                <div class="flex flex-col gap-1 px-5 last:pr-0">
+                  <span class="contact-label">Сommunication</span>
+                  <span class="contact-value max-w-[160px]">Full Hook-Ups</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-2 mt-10 text-xs md:text-sm">
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Picnic Table</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Fire Ring</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Guest WiFi</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Access to 24/hour Community Bathrooms</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >30+50 Amp Power</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Water Hook-Up</span
+                >
+                <span class="px-md py-xs rounded-full border-2 border-green"
+                  >Sewer Hook-Up</span
+                >
+              </div>
+
+              <div class="flex-1 min-h-[60px]"></div>
+
+              <div
+                class="mt-5 md:mt-auto flex-col md:flex-row flex items-center justify-between max-md:gap-xs"
+              >
+                <p class="text-xl md:text-2xl text-[#6D3D3D] font-medium">
+                  Please book by phone
+                </p>
+                <div class="flex items-end h-full">
+                  <a
+                    href="tel:9709295029"
+                    class="btn btn-primary w-full md:w-[210px] py-4 h-[60px]"
+                    >970-929-5029</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="mt-10! md:mt-20! container flex items-center justify-center gap-md pagination-dots"
+        >
+          <span class="pagination-dot active">1</span>
+          <span class="pagination-dot">2</span>
+          <span class="pagination-dot">3</span>
+          <span class="pagination-dot">4</span>
         </div>
       </section>
     </main>
