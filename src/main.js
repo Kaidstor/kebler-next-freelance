@@ -451,179 +451,186 @@ document.addEventListener("DOMContentLoaded", () => {
   // =====================================================
   // Cabin Sidebar Active State on Scroll
   // =====================================================
-  const cabinMenuItems = document.querySelectorAll(".cabin-menu-item");
-  const cabinMainContents = document.querySelectorAll(".cabin-main-content");
-  const mobileSidebars = document.querySelectorAll(".cabin-listing-sidebar");
+  // Process each cabin-listing-layout section independently
+  const cabinListingLayouts = document.querySelectorAll(
+    ".cabin-listing-layout"
+  );
 
-  if (cabinMenuItems.length > 0 && cabinMainContents.length > 0) {
-    let isScrolling = false;
-    let currentActiveIndex = 0;
+  cabinListingLayouts.forEach((layout) => {
+    const cabinMenuItems = layout.querySelectorAll(".cabin-menu-item");
+    const cabinMainContents = layout.querySelectorAll(".cabin-main-content");
+    const mobileSidebars = layout.querySelectorAll(".cabin-listing-sidebar");
 
-    // Determine max index based on available elements
-    const maxIndex = Math.min(
-      cabinMenuItems.length - 1,
-      cabinMainContents.length - 1,
-      mobileSidebars.length > 0
-        ? mobileSidebars[0].querySelectorAll(".size-2").length - 1
-        : cabinMainContents.length - 1
-    );
+    if (cabinMenuItems.length > 0 && cabinMainContents.length > 0) {
+      let isScrolling = false;
+      let currentActiveIndex = 0;
 
-    // Function to update active states
-    function updateActiveStates(activeIndex) {
-      // Clamp index to valid range
-      const clampedIndex = Math.max(0, Math.min(activeIndex, maxIndex));
-      currentActiveIndex = clampedIndex;
+      // Determine max index based on available elements within this layout
+      const maxIndex = Math.min(
+        cabinMenuItems.length - 1,
+        cabinMainContents.length - 1,
+        mobileSidebars.length > 0
+          ? mobileSidebars[0].querySelectorAll(".size-2").length - 1
+          : cabinMainContents.length - 1
+      );
 
-      // Update desktop sidebar
-      cabinMenuItems.forEach((item, index) => {
-        if (index === currentActiveIndex) {
-          item.classList.add("active");
-        } else {
-          item.classList.remove("active");
+      // Function to update active states
+      function updateActiveStates(activeIndex) {
+        // Clamp index to valid range
+        const clampedIndex = Math.max(0, Math.min(activeIndex, maxIndex));
+        currentActiveIndex = clampedIndex;
+
+        // Update desktop sidebar
+        cabinMenuItems.forEach((item, index) => {
+          if (index === currentActiveIndex) {
+            item.classList.add("active");
+          } else {
+            item.classList.remove("active");
+          }
+        });
+
+        // Update mobile sidebars (dots)
+        mobileSidebars.forEach((sidebar) => {
+          const dots = sidebar.querySelectorAll(".size-2");
+          dots.forEach((dot, index) => {
+            if (index === currentActiveIndex) {
+              dot.classList.add("active");
+            } else {
+              dot.classList.remove("active");
+            }
+          });
+        });
+
+        // Update mobile_active class for mobile visibility
+        cabinMainContents.forEach((content, index) => {
+          if (index === currentActiveIndex) {
+            content.classList.add("mobile_active");
+          } else {
+            content.classList.remove("mobile_active");
+          }
+        });
+
+        // Update button states
+        updateButtonStates();
+      }
+
+      // Function to update button enabled/disabled states
+      function updateButtonStates() {
+        mobileSidebars.forEach((sidebar) => {
+          const buttons = sidebar.querySelectorAll("button");
+          const prevButton = buttons[0];
+          const nextButton = buttons[1];
+
+          if (prevButton) {
+            prevButton.disabled = currentActiveIndex <= 0;
+            prevButton.style.opacity = currentActiveIndex <= 0 ? "0.5" : "1";
+            prevButton.style.cursor =
+              currentActiveIndex <= 0 ? "not-allowed" : "pointer";
+          }
+
+          if (nextButton) {
+            nextButton.disabled = currentActiveIndex >= maxIndex;
+            nextButton.style.opacity =
+              currentActiveIndex >= maxIndex ? "0.5" : "1";
+            nextButton.style.cursor =
+              currentActiveIndex >= maxIndex ? "not-allowed" : "pointer";
+          }
+        });
+      }
+
+      // Create intersection observer to track visible cabin sections
+      const observerOptions = {
+        root: null,
+        rootMargin: "-30% 0px -50% 0px", // Trigger when section is in upper-middle viewport
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+      };
+
+      const cabinObserver = new IntersectionObserver((entries) => {
+        if (isScrolling) return; // Skip updates during programmatic scrolling
+
+        // Find the section with highest intersection ratio
+        let maxRatio = 0;
+        let activeIndex = -1;
+
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            activeIndex = Array.from(cabinMainContents).indexOf(entry.target);
+          }
+        });
+
+        // If we found an active section, update all states
+        if (activeIndex !== -1) {
+          updateActiveStates(activeIndex);
         }
+      }, observerOptions);
+
+      // Observe all cabin sections
+      cabinMainContents.forEach((section) => {
+        cabinObserver.observe(section);
       });
 
-      // Update mobile sidebars (dots)
-      mobileSidebars.forEach((sidebar) => {
-        const dots = sidebar.querySelectorAll(".size-2");
-        dots.forEach((dot, index) => {
-          if (index === currentActiveIndex) {
-            dot.classList.add("active");
+      // Handle click on sidebar items to scroll to corresponding section
+      cabinMenuItems.forEach((item, index) => {
+        item.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          // Set flag to prevent observer from updating during scroll
+          isScrolling = true;
+
+          // Update active states
+          updateActiveStates(index);
+
+          // Scroll to corresponding cabin section
+          if (cabinMainContents[index]) {
+            const headerOffset = 100;
+            const elementPosition =
+              cabinMainContents[index].getBoundingClientRect().top;
+            const offsetPosition =
+              elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            });
+
+            // Re-enable observer after scroll completes
+            setTimeout(() => {
+              isScrolling = false;
+            }, 1000);
           } else {
-            dot.classList.remove("active");
+            isScrolling = false;
           }
         });
       });
 
-      // Update mobile_active class for mobile visibility
-      cabinMainContents.forEach((content, index) => {
-        if (index === currentActiveIndex) {
-          content.classList.add("mobile_active");
-        } else {
-          content.classList.remove("mobile_active");
-        }
-      });
-
-      // Update button states
-      updateButtonStates();
-    }
-
-    // Function to update button enabled/disabled states
-    function updateButtonStates() {
+      // =====================================================
+      // Mobile Sidebar Navigation Buttons
+      // =====================================================
       mobileSidebars.forEach((sidebar) => {
         const buttons = sidebar.querySelectorAll("button");
-        const prevButton = buttons[0];
-        const nextButton = buttons[1];
+        const prevButton = buttons[0]; // Left arrow
+        const nextButton = buttons[1]; // Right arrow
 
-        if (prevButton) {
-          prevButton.disabled = currentActiveIndex <= 0;
-          prevButton.style.opacity = currentActiveIndex <= 0 ? "0.5" : "1";
-          prevButton.style.cursor =
-            currentActiveIndex <= 0 ? "not-allowed" : "pointer";
-        }
-
-        if (nextButton) {
-          nextButton.disabled = currentActiveIndex >= maxIndex;
-          nextButton.style.opacity =
-            currentActiveIndex >= maxIndex ? "0.5" : "1";
-          nextButton.style.cursor =
-            currentActiveIndex >= maxIndex ? "not-allowed" : "pointer";
-        }
-      });
-    }
-
-    // Create intersection observer to track visible cabin sections
-    const observerOptions = {
-      root: null,
-      rootMargin: "-30% 0px -50% 0px", // Trigger when section is in upper-middle viewport
-      threshold: [0, 0.25, 0.5, 0.75, 1],
-    };
-
-    const cabinObserver = new IntersectionObserver((entries) => {
-      if (isScrolling) return; // Skip updates during programmatic scrolling
-
-      // Find the section with highest intersection ratio
-      let maxRatio = 0;
-      let activeIndex = -1;
-
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
-          maxRatio = entry.intersectionRatio;
-          activeIndex = Array.from(cabinMainContents).indexOf(entry.target);
-        }
-      });
-
-      // If we found an active section, update all states
-      if (activeIndex !== -1) {
-        updateActiveStates(activeIndex);
-      }
-    }, observerOptions);
-
-    // Observe all cabin sections
-    cabinMainContents.forEach((section) => {
-      cabinObserver.observe(section);
-    });
-
-    // Handle click on sidebar items to scroll to corresponding section
-    cabinMenuItems.forEach((item, index) => {
-      item.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        // Set flag to prevent observer from updating during scroll
-        isScrolling = true;
-
-        // Update active states
-        updateActiveStates(index);
-
-        // Scroll to corresponding cabin section
-        if (cabinMainContents[index]) {
-          const headerOffset = 100;
-          const elementPosition =
-            cabinMainContents[index].getBoundingClientRect().top;
-          const offsetPosition =
-            elementPosition + window.pageYOffset - headerOffset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth",
+        if (prevButton && nextButton) {
+          prevButton.addEventListener("click", () => {
+            if (currentActiveIndex > 0) {
+              updateActiveStates(currentActiveIndex - 1);
+            }
           });
 
-          // Re-enable observer after scroll completes
-          setTimeout(() => {
-            isScrolling = false;
-          }, 1000);
-        } else {
-          isScrolling = false;
+          nextButton.addEventListener("click", () => {
+            if (currentActiveIndex < maxIndex) {
+              updateActiveStates(currentActiveIndex + 1);
+            }
+          });
         }
       });
-    });
 
-    // =====================================================
-    // Mobile Sidebar Navigation Buttons
-    // =====================================================
-    mobileSidebars.forEach((sidebar) => {
-      const buttons = sidebar.querySelectorAll("button");
-      const prevButton = buttons[0]; // Left arrow
-      const nextButton = buttons[1]; // Right arrow
-
-      if (prevButton && nextButton) {
-        prevButton.addEventListener("click", () => {
-          if (currentActiveIndex > 0) {
-            updateActiveStates(currentActiveIndex - 1);
-          }
-        });
-
-        nextButton.addEventListener("click", () => {
-          if (currentActiveIndex < maxIndex) {
-            updateActiveStates(currentActiveIndex + 1);
-          }
-        });
-      }
-    });
-
-    // Initialize: set first item as active
-    updateActiveStates(0);
-  }
+      // Initialize: set first item as active
+      updateActiveStates(0);
+    }
+  });
 
   // =====================================================
   // Cabin Gallery Thumbnail Slider
