@@ -25,11 +25,11 @@
     <main class="section-space-y">
       <!-- Hero Section -->
       <section
-        class="hero-accommodations md:h-[650px]! md:min-h-[650px]!"
+        class="hero-accommodations xs:h-[650px]! xs:min-h-[650px]! h-[750px]! min-h-[750px]!"
         role="main"
       >
         <div
-          class="hero-image-wrapper h-[400px] md:h-[500px] static md:absolute"
+          class="hero-image-wrapper h-[400px] xs:h-[500px] absolute rounded-b-2xl overflow-hidden!"
         >
           <img
             src="images/book.jpg"
@@ -48,7 +48,9 @@
         <div class="container h-full flex items-end">
           <div class="card bg-white z-10 w-full">
             <div class="grid grid-cols-5 gap-10">
-              <div class="grid grid-cols-3 items-center gap-2 col-span-4">
+              <div
+                class="grid xs:grid-cols-2 xl:grid-cols-3 items-center gap-2 col-span-5 xl:col-span-4"
+              >
                 <div class="relative">
                   <button
                     class="dropdown-toggle h-[60px] md:min-w-full!"
@@ -227,8 +229,11 @@
                     </svg>
                   </button>
                 </div>
+                <button class="btn btn-primary w-full xl:hidden!">
+                  Search
+                </button>
               </div>
-              <div class="flex items-center">
+              <div class="items-center hidden xl:flex col-span-1">
                 <button class="btn btn-primary w-full">Search</button>
               </div>
             </div>
@@ -244,9 +249,7 @@
         aria-labelledby="listing-title"
       >
         <div class="container space-y-10 md:space-y-md">
-          <div
-            class="w-full overflow-hidden p-5 border border-gray-2 h-fit rounded-2xl flex"
-          >
+          <div class="booking-list-item">
             <div
               class="rv-image-slider relative rounded-[30px] overflow-hidden w-full"
             >
@@ -309,14 +312,12 @@
               </div>
             </div>
 
-            <div
-              class="md:px-lg max-md:pb-lg max-md:pt-[25px] w-full flex flex-col"
-            >
+            <div class="booking-list-item-content">
               <p class="text-base md:text-2xl font-semibold uppercase">
                 RV Site 2
               </p>
 
-              <div class="flex md:hidden flex-col gap-1 max-md:pl-0 px-5 mt-sm">
+              <div class="flex xs:hidden flex-col gap-1 max-md:pl-0 px-5 mt-sm">
                 <span class="contact-label">Location</span>
                 <span class="contact-value"
                   >Riverside behind the general store</span
@@ -326,14 +327,14 @@
               <div
                 class="flex items-center divide-x [&>div]:border-gray-2 mt-sm"
               >
-                <div class="hidden flex-col gap-1 md:flex px-5 pl-0">
+                <div class="hidden flex-col gap-1 xs:flex px-5 pl-0">
                   <span class="contact-label">Location</span>
                   <span class="contact-value max-md:max-w-[160px]"
                     >Riverside behind the general store</span
                   >
                 </div>
 
-                <div class="flex flex-col gap-1 px-5">
+                <div class="flex flex-col gap-1 pr-5 xs:px-5">
                   <span class="contact-label">Shade</span>
                   <span class="contact-value max-w-[160px]">Partial</span>
                 </div>
@@ -349,7 +350,7 @@
                 </div>
               </div>
 
-              <div class="flex flex-wrap gap-2 mt-10 text-xs md:text-sm">
+              <div class="flex flex-wrap gap-2 mt-10 text-xs xs:text-sm">
                 <span class="px-md py-xs rounded-full border-2 border-green"
                   >Picnic Table</span
                 >
@@ -373,28 +374,31 @@
                 >
               </div>
 
-              <div class="flex-1 min-h-[60px]"></div>
+              <div class="flex-1 xs:min-h-[60px]"></div>
 
               <div
-                class="mt-5 md:mt-auto flex-col md:flex-row flex items-center justify-between max-md:gap-xs"
+                class="mt-10 xs:mt-5 md:mt-auto flex-col md:flex-row flex items-center justify-between max-md:gap-xs"
               >
                 <div class="flex flex-col">
-                  <div class="flex gap-xs items-center">
-                    <span class="text-xl md:text-2xl line-through">
-                      $70.50</span
-                    >
+                  <div class="flex flex-col xs:flex-row gap-xs items-center">
+                    <div class="flex items-center gap-xs max-xs:order-2">
+                      <span class="text-xl md:text-2xl line-through">
+                        $70.50</span
+                      >
 
-                    <span
-                      class="text-white bg-green rounded-full px-md py-xs text-base md:text-xl leading-[1.2]"
-                      >10%</span
-                    >
-
-                    <p class="text-xs md:text-sm text-gray-1">
+                      <span
+                        class="text-white bg-green rounded-full px-md py-xs text-base md:text-xl leading-[1.2]"
+                        >10%</span
+                      >
+                    </div>
+                    <p class="text-xs md:text-sm text-gray-1 max-xs:order-1">
                       Shoulder Night Discount 2025
                     </p>
                   </div>
 
-                  <div class="pricing-amount">
+                  <div
+                    class="pricing-amount max-xs:mt-xs xs:justify-center xs:mt-xs lg:justify-start lg:mt-0"
+                  >
                     <span class="price-number">
                       <span class="text-xl md:text-2xl font-medium text-green"
                         >$</span
@@ -403,7 +407,7 @@
                     <span class="price-period">/ night</span>
                   </div>
                 </div>
-                <div class="flex items-end h-full">
+                <div class="booking-btn w-full">
                   <a
                     href="#book"
                     class="btn btn-primary w-full md:w-[210px] py-4 h-[60px]"
@@ -414,9 +418,7 @@
             </div>
           </div>
 
-          <div
-            class="w-full overflow-hidden p-5 border border-gray-2 h-fit rounded-2xl flex"
-          >
+          <div class="booking-list-item">
             <div
               class="rv-image-slider relative rounded-[30px] overflow-hidden w-full"
             >
@@ -479,9 +481,7 @@
               </div>
             </div>
 
-            <div
-              class="md:px-lg max-md:pb-lg max-md:pt-[25px] w-full flex flex-col"
-            >
+            <div class="booking-list-item-content">
               <p class="text-base md:text-2xl font-semibold uppercase">
                 RV Site 2
               </p>
@@ -543,10 +543,10 @@
                 >
               </div>
 
-              <div class="flex-1 min-h-[60px]"></div>
+              <div class="flex-1 xs:min-h-[60px]"></div>
 
               <div
-                class="mt-5 md:mt-auto flex-col md:flex-row flex items-center justify-between max-md:gap-xs"
+                class="mt-10 xs:mt-5 md:mt-auto flex-col xs:flex-row flex items-center justify-between max-md:gap-xs"
               >
                 <div class="flex flex-col gap-xs">
                   <div class="pricing-amount">
@@ -558,7 +558,7 @@
                     <span class="price-period">/ night</span>
                   </div>
                 </div>
-                <div class="flex items-end h-full">
+                <div class="booking-btn">
                   <a
                     href="#book"
                     class="btn btn-primary w-full md:w-[210px] py-4 h-[60px]"
@@ -569,9 +569,7 @@
             </div>
           </div>
 
-          <div
-            class="w-full overflow-hidden p-5 border border-gray-2 h-fit rounded-2xl flex bg-white-2"
-          >
+          <div class="booking-list-item bg-white-2">
             <div
               class="rv-image-slider relative rounded-[30px] overflow-hidden w-full"
             >
@@ -634,9 +632,7 @@
               </div>
             </div>
 
-            <div
-              class="md:px-lg max-md:pb-lg max-md:pt-[25px] w-full flex flex-col"
-            >
+            <div class="booking-list-item-content">
               <p class="text-base md:text-2xl font-semibold uppercase">
                 RV Site 2
               </p>
@@ -698,14 +694,18 @@
                 >
               </div>
 
-              <div class="flex-1 min-h-[60px]"></div>
+              <div class="flex-1 xs:min-h-[60px]"></div>
 
-              <div class="mt-5 md:mt-auto space-y-[5px]">
+              <div class="mt-10 xs:mt-5 md:mt-auto space-y-[5px]">
                 <div
-                  class="mt-5 md:mt-auto flex-col md:flex-row flex items-center justify-between max-md:gap-xs bg-white pl-lg pr-sm py-sm rounded-full border border-gray-2"
+                  class="mt-5 md:mt-auto flex-col xs:flex-row flex items-center justify-between max-md:gap-xs bg-white px-sm xs:pl-lg xs:pr-sm py-sm rounded-[50px] border border-gray-2 max-xs:gap-5"
                 >
-                  <div class="flex flex-col items-start">
-                    <span class="pricing-label">Weekly Rate (RV Only)</span>
+                  <div
+                    class="flex flex-col max-xs:gap-1 items-center xs:items-start"
+                  >
+                    <span class="pricing-label max-xs:text-xs!"
+                      >Weekly Rate (RV Only)</span
+                    >
                     <div class="pricing-amount">
                       <span class="price-number">
                         <span class="text-xl md:text-2xlfont-medium text-green"
@@ -715,7 +715,7 @@
                       <span class="price-period">/ night</span>
                     </div>
                   </div>
-                  <div class="flex items-end h-full">
+                  <div class="booking-btn">
                     <a
                       href="#book"
                       class="btn btn-primary w-full md:w-[210px] py-4 h-[60px]"
@@ -725,10 +725,12 @@
                 </div>
 
                 <div
-                  class="flex-col md:flex-row flex items-center justify-between max-md:gap-xs bg-white pl-lg pr-sm py-sm rounded-full border border-gray-2"
+                  class="flex-col xs:flex-row flex items-center justify-between max-md:gap-xs bg-white px-sm xs:pl-lg xs:pr-sm py-sm rounded-[50px] border border-gray-2 max-xs:gap-5"
                 >
-                  <div class="flex flex-col items-start">
-                    <span class="pricing-label">RV Rate</span>
+                  <div
+                    class="flex flex-col max-xs:gap-1 items-center xs:items-start"
+                  >
+                    <span class="pricing-label max-xs:text-xs!">RV Rate</span>
                     <div class="pricing-amount">
                       <span class="price-number">
                         <span class="text-xl md:text-2xlfont-medium text-green"
@@ -738,7 +740,7 @@
                       <span class="price-period">/ night</span>
                     </div>
                   </div>
-                  <div class="flex items-end h-full">
+                  <div class="booking-btn">
                     <a
                       href="#book"
                       class="btn btn-primary w-full md:w-[210px] py-4 h-[60px]"
@@ -750,9 +752,7 @@
             </div>
           </div>
 
-          <div
-            class="w-full overflow-hidden p-5 border border-gray-2 h-fit rounded-2xl flex"
-          >
+          <div class="booking-list-item">
             <div
               class="rv-image-slider relative rounded-[30px] overflow-hidden w-full"
             >
@@ -815,9 +815,7 @@
               </div>
             </div>
 
-            <div
-              class="md:px-lg max-md:pb-lg max-md:pt-[25px] w-full flex flex-col"
-            >
+            <div class="booking-list-item-content">
               <p class="text-base md:text-2xl font-semibold uppercase">
                 RV Site 2
               </p>
@@ -879,15 +877,15 @@
                 >
               </div>
 
-              <div class="flex-1 min-h-[60px]"></div>
+              <div class="flex-1 xs:min-h-[60px]"></div>
 
               <div
-                class="mt-5 md:mt-auto flex-col md:flex-row flex items-center justify-between max-md:gap-xs"
+                class="mt-10 xs:mt-5 md:mt-auto flex-col xs:flex-row flex items-center justify-between max-md:gap-xs"
               >
                 <p class="text-xl md:text-2xl text-[#6D3D3D] font-medium">
                   Please book by phone
                 </p>
-                <div class="flex items-end h-full">
+                <div class="booking-btn">
                   <a
                     href="tel:9709295029"
                     class="btn btn-primary w-full md:w-[210px] py-4 h-[60px]"

@@ -20,6 +20,7 @@
   --color-gray-2: #dddddd;
   --color-gray-3: #666666;
   --color-green: #3d6d57;
+  --color-green-2: #305544;
   --color-green-50: #3d6d5750;
 
   /* Custom spacing */
@@ -32,6 +33,8 @@
   --spacing-2xl: 4rem; /* 64px */
   --spacing-3lg: 5rem; /* 80px */
   --spacing-3xl: 6rem; /* 96px */
+
+  --breakpoint-xs: 480px;
 }
 
 :root {
@@ -138,9 +141,7 @@ a {
    Layout - Container
    ===================================================== */
 .container {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  width: 100%;
+  @apply mx-auto max-w-(--container-max-width) w-full md:px-5;
 }
 
 /* =====================================================
@@ -177,6 +178,8 @@ a {
 }
 
 .btn-white {
+  @apply h-[60px] px-15 flex justify-center items-center rounded-[50px] font-semibold;
+
   background-color: var(--color-white);
   color: var(--color-black);
 }
@@ -204,6 +207,7 @@ a {
    Header & Navigation
    ===================================================== */
 .header {
+  @apply px-xs md:px-5;
   position: absolute;
   top: 24px;
   left: 0;
@@ -212,14 +216,7 @@ a {
 }
 
 .nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--color-white);
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  border-radius: var(--radius-2xl);
-  padding: var(--spacing-xs);
+  @apply flex items-center justify-between bg-white max-w-(--container-max-width) mx-auto rounded-2xl p-xs max-xl:pr-md;
 }
 
 .logo {
@@ -228,7 +225,7 @@ a {
 }
 
 .nav-menu {
-  display: flex;
+  @apply hidden xl:flex;
   list-style: none;
   gap: var(--spacing-xl);
   align-items: center;
@@ -306,6 +303,7 @@ a {
 }
 
 .nav-cta {
+  @apply hidden xl:flex;
   padding: var(--spacing-sm) var(--spacing-2xl);
 }
 
@@ -317,7 +315,6 @@ a {
   height: 85vh;
   min-height: 700px;
   max-height: 715px;
-  overflow: hidden;
 }
 
 .hero-image-wrapper {
@@ -337,7 +334,7 @@ a {
 }
 
 .hero-overlay-content {
-  @apply md:items-end;
+  @apply md:items-end px-5;
   height: 100%;
   max-width: var(--container-max-width);
   margin: 0 auto;
@@ -1148,12 +1145,6 @@ blockquote {
   border-top-right-radius: var(--radius-2xl);
 }
 
-.footer-content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-lg);
-}
-
 .footer-logo .logo-image {
   width: 216px;
   height: auto;
@@ -1197,7 +1188,7 @@ blockquote {
 
 /* Hamburger Button */
 .hamburger-menu {
-  display: none;
+  @apply flex xl:hidden;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -1225,6 +1216,7 @@ blockquote {
 /* Hamburger active state - transforms to X */
 .hamburger-menu.active .hamburger-line:first-child {
   transform: translateY(5px) rotate(45deg);
+  background-color: white;
 }
 
 .hamburger-menu.active .hamburger-line:nth-child(2) {
@@ -1233,6 +1225,7 @@ blockquote {
 
 .hamburger-menu.active .hamburger-line:last-child {
   transform: translateY(-5px) rotate(-45deg);
+  background-color: white;
 }
 
 /* Mobile Drawer */
@@ -1240,7 +1233,7 @@ blockquote {
   position: fixed;
   top: 0;
   right: 0;
-  width: calc(100% - 20px);
+  width: 400px;
   height: 100%;
   background-color: var(--color-green);
   color: var(--color-white);
@@ -1258,31 +1251,16 @@ blockquote {
   transform: translateX(0);
 }
 
-/* Mobile Navigation Menu */
-.mobile-nav-menu {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding: 0 var(--spacing-lg);
-}
-
-.mobile-nav-menu li {
-  border-bottom: 1px solid var(--color-gray-2);
-  padding: var(--spacing-lg) 0;
-}
-
 .mobile-nav-link {
   display: block;
-  font-size: var(--text-xl);
   font-weight: 500;
-  color: var(--color-black);
+  color: var(--color-white);
   text-decoration: none;
   transition: color var(--transition-base);
 }
 
 .mobile-nav-link:hover {
-  color: var(--color-green);
+  opacity: 0.7;
 }
 
 /* Mobile Submenu */
@@ -1309,12 +1287,6 @@ blockquote {
 
 .mobile-nav-sublink:hover {
   color: var(--color-green);
-}
-
-/* Mobile CTA Button */
-.mobile-nav-cta {
-  width: 100%;
-  margin-top: var(--spacing-md);
 }
 
 /* Overlay for drawer */
@@ -1349,27 +1321,12 @@ body.drawer-open::before {
     --container-padding: var(--spacing-md);
   }
 
-  .nav-menu {
-    gap: var(--spacing-md);
-  }
-
   .hero-title {
     font-size: var(--text-4xl-2);
   }
 
   .cabin-nav {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* Hide desktop navigation */
-  .nav-menu,
-  .nav-cta {
-    display: none;
-  }
-
-  /* Show hamburger menu */
-  .hamburger-menu {
-    display: flex;
   }
 }
 
@@ -1386,13 +1343,6 @@ body.drawer-open::before {
   /* Navigation - Mobile */
   .nav-container {
     flex-wrap: wrap;
-    gap: var(--spacing-sm);
-  }
-
-  .nav-menu {
-    display: none; /* Simplified for initial version */
-    width: 100%;
-    flex-direction: column;
     gap: var(--spacing-sm);
   }
 
@@ -1669,85 +1619,18 @@ body.drawer-open::before {
 }
 
 /* =====================================================
-   Tailwind Grid
+   Booking List Item
    ===================================================== */
-.grid {
-  display: grid;
+.booking-list-item {
+  @apply w-full overflow-hidden p-5 border border-gray-2 h-fit rounded-2xl flex lg:flex-row flex-col;
 }
 
-.grid-cols-1 {
-  grid-template-columns: 1fr;
+.booking-list-item-content {
+  @apply md:px-lg max-lg:pt-[25px] w-full flex flex-col;
 }
 
-.grid-cols-2 {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.grid-cols-3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-.grid-cols-4 {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.grid-cols-12 {
-  grid-template-columns: repeat(12, 1fr);
-}
-
-.col-span-1 {
-  grid-column: span 1;
-}
-
-.col-span-2 {
-  grid-column: span 2;
-}
-
-.col-span-3 {
-  grid-column: span 3;
-}
-
-.col-span-5 {
-  grid-column: span 5;
-}
-
-.col-span-7 {
-  grid-column: span 7;
-}
-
-.col-span-10 {
-  grid-column: span 10;
-}
-
-.gap-sm {
-  gap: var(--spacing-sm);
-}
-
-.gap-md {
-  gap: var(--spacing-md);
-}
-
-.gap-lg {
-  gap: var(--spacing-lg);
-}
-
-.gap-2lg {
-  gap: var(--spacing-2lg);
-}
-
-.gap-3lg {
-  gap: var(--spacing-3lg);
-}
-
-.gap-xl {
-  gap: var(--spacing-xl);
-}
-
-.gap-2xl {
-  gap: var(--spacing-2xl);
-}
-
-.gap-3xl {
-  gap: var(--spacing-3xl);
+.booking-btn {
+  @apply flex items-end h-full max-xs:w-full;
 }
 
 /* =====================================================
@@ -1983,25 +1866,6 @@ body.drawer-open::before {
     padding-inline: var(--spacing-xs);
   }
 
-  .footer-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .footer-links,
-  .footer-text {
-    display: none;
-  }
-
-  .footer-links-mobile {
-    display: flex;
-  }
-
-  .footer-text-mobile,
-  .hero-bg-image-mobile {
-    display: block;
-  }
-
   .cabin-pricing-card,
   .cabin-details-card-left {
     min-width: unset;
@@ -2078,6 +1942,20 @@ body.drawer-open::before {
   .contact-hours {
     flex-direction: column;
     gap: 0;
+  }
+
+  .footer-links,
+  .footer-text {
+    display: none;
+  }
+
+  .footer-links-mobile {
+    display: flex;
+  }
+
+  .footer-text-mobile,
+  .hero-bg-image-mobile {
+    display: block;
   }
 }
 

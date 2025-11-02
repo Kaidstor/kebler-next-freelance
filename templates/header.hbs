@@ -6,7 +6,7 @@
       <img
         src="images/logo.svg"
         alt="Kebler Corner Logo"
-        class="logo-image h-[22px] md:h-[50px]"
+        class="logo-image h-[42] xl:h-[50px]"
       />
     </div>
 
@@ -43,16 +43,19 @@
     </button>
 
     <!-- Mobile Drawer Menu -->
-    <div class="mobile-drawer">
-      <ul class="mobile-nav-menu">
+    <div class="mobile-drawer relative flex flex-col">
+
+      <img
+        src="images/logo-white.svg"
+        alt="Kebler Corner Logo"
+        class="logo-image h-[42] xl:h-[50px] absolute top-10 left-5"
+      />
+
+      <ul class="flex flex-col gap-5 mt-10 color-white px-lg">
         <li>
-          <a href="#accommodations" class="mobile-nav-link"
-            >Accommodations</a
-          >
+          <a href="#accommodations" class="mobile-nav-link">Accommodations</a>
           <div class="mobile-nav-submenu">
-            <a href="#full-cabins" class="mobile-nav-sublink"
-              >Full Cabins</a
-            >
+            <a href="#full-cabins" class="mobile-nav-sublink">Full Cabins</a>
             <a href="#rv-sites" class="mobile-nav-sublink">RV Sites</a>
             <a href="#campsites" class="mobile-nav-sublink">Campsites</a>
           </div>
@@ -63,17 +66,65 @@
         <li><a href="#about" class="mobile-nav-link">About Us</a></li>
         <li><a href="#contact" class="mobile-nav-link">Contact Us</a></li>
         <li>
-          <a href="#gift-certificates" class="mobile-nav-link"
-            >Gift Certificates</a
-          >
-        </li>
-        <li>
-          <a href="#book" class="btn btn-primary mobile-nav-cta"
-            >Book now</a
-          >
+          <a href="#gift-certificates" class="mobile-nav-link">Gift Certificates</a>
         </li>
       </ul>
+
+      <div class="p-lg mt-auto">
+        <a href="#book" class="btn-white">BOOK NOW</a>
+
+        <!-- Social Media Links -->
+        <div class="social-links mt-xl max-md:justify-center">
+          <a href="#" class="social-link" aria-label="Follow us on Instagram">
+            <img src="images/instagram.svg" alt="Instagram" />
+          </a>
+          <a
+            href="https://www.facebook.com/keblercorner"
+            class="social-link"
+            aria-label="Follow us on Facebook"
+          >
+            <img src="images/facebook.svg" alt="Facebook" />
+          </a>
+          <a href="#" class="social-link" aria-label="Follow us on Twitter">
+            <img src="images/twitter.svg" alt="Twitter" />
+          </a>
+          <a href="#" class="social-link" aria-label="Follow us on YouTube">
+            <img src="images/youtube.svg" alt="YouTube" />
+          </a>
+        </div>
+
+        <div class="footer-text-mobile sm:mt-2lg mt-20">
+          <p
+            class="text-xs md:text-base max-md:text-center uppercase text-gray-2"
+          >
+            ©
+            <a
+              href="https://www.outdoorhospitality.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-2 underline"
+            >Outdoor Hospitality Solutions Inc</a><br />
+            2020. All Right Reserved.
+          </p>
+        </div>
+
+        <div
+          class="footer-links-mobile text-xs md:text-base mt-2lg md:mt-auto flex gap-2lg md:gap-3lg max-md:text-center"
+        >
+          <a
+            href="https://www.keblercorner.com/privacy-policy"
+            class="text-gray-2 underline uppercase"
+          >Privacy policy</a>
+          <a
+            href="https://www.keblercorner.com/terms-and-conditions"
+            class="text-gray-2 underline uppercase"
+          >Kebler corner terms & conditions</a>
+          <a
+            href="https://www.keblercorner.com/liability-waiver"
+            class="text-gray-2 underline uppercase"
+          >Liability Waiver</a>
+        </div>
+      </div>
     </div>
   </nav>
 </header>
-
