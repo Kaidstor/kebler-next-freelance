@@ -461,6 +461,87 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // =====================================================
+  // Cabin Gallery Thumbnail Slider
+  // =====================================================
+  const cabinGalleries = document.querySelectorAll(".cabin-gallery");
+
+  cabinGalleries.forEach((gallery) => {
+    const mainImage = gallery.querySelector(".cabin-main-image img");
+    const thumbnails = gallery.querySelectorAll(".cabin-thumbnails .thumbnail");
+    const mobileThumbnails = gallery.querySelectorAll(
+      ".cabin-thumbnails-wrapper-mobile .thumbnail"
+    );
+
+    if (!mainImage || thumbnails.length === 0) return;
+
+    // Handle desktop thumbnails
+    thumbnails.forEach((thumbnail, index) => {
+      thumbnail.addEventListener("click", () => {
+        // Remove active class from all thumbnails
+        thumbnails.forEach((thumb) => thumb.classList.remove("active"));
+        mobileThumbnails.forEach((thumb) => thumb.classList.remove("active"));
+
+        // Add active class to clicked thumbnail
+        thumbnail.classList.add("active");
+        if (mobileThumbnails[index]) {
+          mobileThumbnails[index].classList.add("active");
+        }
+
+        // Scroll to active thumbnail
+        const wrapper = gallery.querySelector(".cabin-thumbnails-wrapper");
+        if (wrapper) {
+          thumbnail.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "nearest",
+          });
+        }
+
+        // Update main image
+        const thumbnailImg = thumbnail.querySelector("img");
+        if (thumbnailImg) {
+          mainImage.src = thumbnailImg.src;
+          mainImage.alt = thumbnailImg.alt;
+        }
+      });
+    });
+
+    // Handle mobile thumbnails
+    mobileThumbnails.forEach((thumbnail, index) => {
+      thumbnail.addEventListener("click", () => {
+        // Remove active class from all thumbnails
+        thumbnails.forEach((thumb) => thumb.classList.remove("active"));
+        mobileThumbnails.forEach((thumb) => thumb.classList.remove("active"));
+
+        // Add active class to clicked thumbnail
+        thumbnail.classList.add("active");
+        if (thumbnails[index]) {
+          thumbnails[index].classList.add("active");
+        }
+
+        // Scroll to active thumbnail (mobile)
+        const mobileWrapper = gallery.querySelector(
+          ".cabin-thumbnails-wrapper-mobile"
+        );
+        if (mobileWrapper) {
+          thumbnail.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "nearest",
+          });
+        }
+
+        // Update main image
+        const thumbnailImg = thumbnail.querySelector("img");
+        if (thumbnailImg) {
+          mainImage.src = thumbnailImg.src;
+          mainImage.alt = thumbnailImg.alt;
+        }
+      });
+    });
+  });
+
+  // =====================================================
   // Intersection Observer for Animations
   // =====================================================
   const observerOptions = {
