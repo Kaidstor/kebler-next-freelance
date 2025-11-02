@@ -453,9 +453,84 @@ document.addEventListener("DOMContentLoaded", () => {
   // =====================================================
   const cabinMenuItems = document.querySelectorAll(".cabin-menu-item");
   const cabinMainContents = document.querySelectorAll(".cabin-main-content");
+  const mobileSidebars = document.querySelectorAll(".cabin-listing-sidebar");
 
   if (cabinMenuItems.length > 0 && cabinMainContents.length > 0) {
     let isScrolling = false;
+    let currentActiveIndex = 0;
+
+    // Determine max index based on available elements
+    const maxIndex = Math.min(
+      cabinMenuItems.length - 1,
+      cabinMainContents.length - 1,
+      mobileSidebars.length > 0
+        ? mobileSidebars[0].querySelectorAll(".size-2").length - 1
+        : cabinMainContents.length - 1
+    );
+
+    // Function to update active states
+    function updateActiveStates(activeIndex) {
+      // Clamp index to valid range
+      const clampedIndex = Math.max(0, Math.min(activeIndex, maxIndex));
+      currentActiveIndex = clampedIndex;
+
+      // Update desktop sidebar
+      cabinMenuItems.forEach((item, index) => {
+        if (index === currentActiveIndex) {
+          item.classList.add("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+
+      // Update mobile sidebars (dots)
+      mobileSidebars.forEach((sidebar) => {
+        const dots = sidebar.querySelectorAll(".size-2");
+        dots.forEach((dot, index) => {
+          if (index === currentActiveIndex) {
+            dot.classList.add("active");
+          } else {
+            dot.classList.remove("active");
+          }
+        });
+      });
+
+      // Update mobile_active class for mobile visibility
+      cabinMainContents.forEach((content, index) => {
+        if (index === currentActiveIndex) {
+          content.classList.add("mobile_active");
+        } else {
+          content.classList.remove("mobile_active");
+        }
+      });
+
+      // Update button states
+      updateButtonStates();
+    }
+
+    // Function to update button enabled/disabled states
+    function updateButtonStates() {
+      mobileSidebars.forEach((sidebar) => {
+        const buttons = sidebar.querySelectorAll("button");
+        const prevButton = buttons[0];
+        const nextButton = buttons[1];
+
+        if (prevButton) {
+          prevButton.disabled = currentActiveIndex <= 0;
+          prevButton.style.opacity = currentActiveIndex <= 0 ? "0.5" : "1";
+          prevButton.style.cursor =
+            currentActiveIndex <= 0 ? "not-allowed" : "pointer";
+        }
+
+        if (nextButton) {
+          nextButton.disabled = currentActiveIndex >= maxIndex;
+          nextButton.style.opacity =
+            currentActiveIndex >= maxIndex ? "0.5" : "1";
+          nextButton.style.cursor =
+            currentActiveIndex >= maxIndex ? "not-allowed" : "pointer";
+        }
+      });
+    }
 
     // Create intersection observer to track visible cabin sections
     const observerOptions = {
@@ -478,15 +553,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      // If we found an active section, update sidebar
+      // If we found an active section, update all states
       if (activeIndex !== -1) {
-        cabinMenuItems.forEach((item, index) => {
-          if (index === activeIndex) {
-            item.classList.add("active");
-          } else {
-            item.classList.remove("active");
-          }
-        });
+        updateActiveStates(activeIndex);
       }
     }, observerOptions);
 
@@ -503,13 +572,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Set flag to prevent observer from updating during scroll
         isScrolling = true;
 
-        // Remove active from all items
-        cabinMenuItems.forEach((menuItem) => {
-          menuItem.classList.remove("active");
-        });
-
-        // Add active to clicked item
-        item.classList.add("active");
+        // Update active states
+        updateActiveStates(index);
 
         // Scroll to corresponding cabin section
         if (cabinMainContents[index]) {
@@ -533,6 +597,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
+
+    // =====================================================
+    // Mobile Sidebar Navigation Buttons
+    // =====================================================
+    mobileSidebars.forEach((sidebar) => {
+      const buttons = sidebar.querySelectorAll("button");
+      const prevButton = buttons[0]; // Left arrow
+      const nextButton = buttons[1]; // Right arrow
+
+      if (prevButton && nextButton) {
+        prevButton.addEventListener("click", () => {
+          if (currentActiveIndex > 0) {
+            updateActiveStates(currentActiveIndex - 1);
+          }
+        });
+
+        nextButton.addEventListener("click", () => {
+          if (currentActiveIndex < maxIndex) {
+            updateActiveStates(currentActiveIndex + 1);
+          }
+        });
+      }
+    });
+
+    // Initialize: set first item as active
+    updateActiveStates(0);
   }
 
   // =====================================================

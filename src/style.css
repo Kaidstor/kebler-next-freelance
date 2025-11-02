@@ -667,9 +667,13 @@ Flatpickr Calendar Customization
 
 /* Main Content Area */
 .cabin-main-content {
-  display: flex;
+  @apply hidden md:flex;
   flex-direction: column;
   gap: var(--spacing-lg);
+}
+
+.cabin-main-content.mobile_active {
+  @apply max-md:block;
 }
 
 /* Image Gallery */
@@ -683,6 +687,10 @@ Flatpickr Calendar Customization
   border-radius: var(--radius-2xl);
   overflow: hidden;
   height: 560px;
+
+  & > img {
+    @apply max-md:absolute;
+  }
 }
 
 .cabin-main-image img {
@@ -741,7 +749,7 @@ Flatpickr Calendar Customization
 }
 
 .thumbnail:not(.active) img {
-  padding: 10px;
+  @apply md:p-xs;
   border: none;
 }
 
@@ -751,7 +759,7 @@ Flatpickr Calendar Customization
 }
 
 .thumbnail.active img {
-  padding: 0px;
+  @apply md:p-0;
 }
 
 .thumbnail:hover {
@@ -1905,6 +1913,7 @@ body.drawer-open::before {
   }
 
   .cabin-details-card {
+    @apply max-md:mt-lg;
     flex-direction: column;
     gap: var(--spacing-md);
   }
@@ -1988,4 +1997,15 @@ body.drawer-open::before {
 
 .pagination-dot.active {
   @apply size-10 flex items-center justify-center bg-green text-white;
+}
+
+/* Mobile sidebar dots */
+.cabin-listing-sidebar .size-2 {
+  transition: all var(--transition-base);
+}
+
+.cabin-listing-sidebar .size-2.active {
+  background-color: var(--color-green);
+  width: 10px;
+  height: 10px;
 }
