@@ -91,7 +91,7 @@
       <!-- Cabin Listing Section -->
       <section
         id="cabin-listing"
-        class="cabin-listing"
+        class="cabin-listing max-md:mt-0!"
         role="region"
         aria-labelledby="listing-title"
       >
@@ -103,94 +103,124 @@
               <ul class="cabin-menu">
                 <li class="cabin-menu-item active">THE LOG HOUSE</li>
                 <li class="cabin-menu-item">THE COTTAGE</li>
-                <li class="cabin-menu-item">MARCELLINA</li>
-                <li class="cabin-menu-item">DOC HOLLIDAY'S CABIN</li>
-                <li class="cabin-menu-item">WYATT'S CABIN</li>
               </ul>
             </aside>
 
-            <div class="cabin-listing-sidebar md:hidden">
-              <div class="flex items-center justify-between">
-                <button
-                  class="text-white bg-green size-[30px] rounded-full flex justify-center items-center"
-                >
-                  <svg
-                    width="9"
-                    height="14"
-                    viewBox="0 0 9 14"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+            <div class="lg:space-y-[120px]">
+              <!-- Mobile Switch -->
+              <div class="cabin-listing-sidebar md:hidden mt-15 mb-lg">
+                <div class="flex items-center justify-between">
+                  <button
+                    class="text-white bg-green size-[30px] rounded-full flex justify-center items-center"
                   >
-                    <path
-                      d="M7.63268 0.713135L1.42578 6.81483L7.63268 12.9165"
-                      stroke="white"
-                      stroke-width="2"
-                    />
-                  </svg>
-                </button>
-                <h3 class="text-xl text-semibold uppercase">FULL CABINS</h3>
-                <button
-                  class="text-white bg-green size-[30px] rounded-full flex justify-center items-center"
-                >
-                  <svg
-                    width="9"
-                    height="14"
-                    viewBox="0 0 9 14"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                    <svg
+                      width="9"
+                      height="14"
+                      viewBox="0 0 9 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.63268 0.713135L1.42578 6.81483L7.63268 12.9165"
+                        stroke="white"
+                        stroke-width="2"
+                      />
+                    </svg>
+                  </button>
+                  <h3 class="text-xl text-semibold uppercase">FULL CABINS</h3>
+                  <button
+                    class="text-white bg-green size-[30px] rounded-full flex justify-center items-center"
                   >
-                    <path
-                      d="M0.699354 0.713135L6.90625 6.81483L0.699354 12.9165"
-                      stroke="white"
-                      stroke-width="2"
-                    />
-                  </svg>
-                </button>
+                    <svg
+                      width="9"
+                      height="14"
+                      viewBox="0 0 9 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0.699354 0.713135L6.90625 6.81483L0.699354 12.9165"
+                        stroke="white"
+                        stroke-width="2"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="flex justify-center mt-md gap-[5px]">
+                  <span class="size-2 rounded-full bg-green-50 active"></span>
+                  <span class="size-2 rounded-full bg-green-50"></span>
+                  <span class="size-2 rounded-full bg-green-50"></span>
+                  <span class="size-2 rounded-full bg-green-50"></span>
+                </div>
               </div>
-              <div class="flex justify-center mt-md gap-[5px]">
-                <span class="size-2 rounded-full bg-green-50 active"></span>
-                <span class="size-2 rounded-full bg-green-50"></span>
-                <span class="size-2 rounded-full bg-green-50"></span>
-                <span class="size-2 rounded-full bg-green-50"></span>
-              </div>
-            </div>
 
-            <!-- Main Content Area -->
-            <div class="cabin-main-content">
-              <div class="cabin-details-card-mobile">
-                <div class="cabin-details-header">
-                  <div class="cabin-details-header-left">
-                    <h2 class="cabin-title">THE LOG HOUSE</h2>
-                    <span class="cabin-badge">2-night minimum</span>
+              <!-- Desktop Sidebar Item 1 -->
+              <div class="cabin-main-content">
+                <div class="cabin-details-card-mobile">
+                  <div class="cabin-details-header">
+                    <div class="cabin-details-header-left">
+                      <h2 class="cabin-title">THE LOG HOUSE</h2>
+                      <span class="cabin-badge">2-night minimum</span>
+                    </div>
                   </div>
+
+                  <p class="cabin-description-text">
+                    The Marcellina Cabin — the most luxurious log cabin at
+                    Kebler Corner. Perfect for families or friends, it features
+                    a full kitchen with bar, spacious living room, washer &
+                    dryer, and a private deck with mountain views.
+                  </p>
                 </div>
 
-                <p class="cabin-description-text">
-                  The Marcellina Cabin — the most luxurious log cabin at Kebler
-                  Corner. Perfect for families or friends, it features a full
-                  kitchen with bar, spacious living room, washer & dryer, and a
-                  private deck with mountain views.
-                </p>
-              </div>
+                <!-- Image Gallery -->
+                <div class="cabin-gallery @container">
+                  <!-- Main Image -->
+                  <div class="cabin-main-image" style="position: relative">
+                    <img
+                      src="images/cabins/marcellina.png"
+                      alt="Marcellina Cabin"
+                    />
 
-              <!-- Image Gallery -->
-              <div class="cabin-gallery @container">
-                <!-- Main Image -->
-                <div class="cabin-main-image" style="position: relative">
-                  <img
-                    src="images/cabins/marcellina.png"
-                    alt="Marcellina Cabin"
-                  />
+                    <!-- Thumbnail Gallery -->
+                    <div
+                      class="cabin-thumbnails-wrapper"
+                      style="
+                        position: absolute;
+                        top: var(--spacing-lg);
+                        left: var(--spacing-lg);
+                      "
+                    >
+                      <div class="cabin-thumbnails">
+                        <button class="thumbnail active">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 1"
+                          />
+                        </button>
+                        <button class="thumbnail">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 2"
+                          />
+                        </button>
+                        <button class="thumbnail">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 3"
+                          />
+                        </button>
+                        <button class="thumbnail">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 4"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
 
                   <!-- Thumbnail Gallery -->
-                  <div
-                    class="cabin-thumbnails-wrapper"
-                    style="
-                      position: absolute;
-                      top: var(--spacing-lg);
-                      left: var(--spacing-lg);
-                    "
-                  >
+                  <div class="cabin-thumbnails-wrapper-mobile overflow-hidden">
                     <div class="cabin-thumbnails">
                       <button class="thumbnail active">
                         <img
@@ -219,42 +249,360 @@
                     </div>
                   </div>
                 </div>
+                <!-- Cabin Details -->
+                <div class="cabin-details-card">
+                  <div
+                    class="cabin-details-card-left max-md:order-2 w-full md:min-w-[460px] md:w-[460px] hidden-mobile"
+                  >
+                    <div class="cabin-details-header">
+                      <div class="cabin-details-header-left">
+                        <h2 class="cabin-title">THE LOG HOUSE</h2>
+                        <span class="cabin-badge">2-night minimum</span>
+                      </div>
+                    </div>
 
-                <!-- Thumbnail Gallery -->
-                <div class="cabin-thumbnails-wrapper-mobile overflow-hidden">
-                  <div class="cabin-thumbnails">
-                    <button class="thumbnail active">
-                      <img
-                        src="images/cabins/marcellina.png"
-                        alt="Marcellina view 1"
-                      />
-                    </button>
-                    <button class="thumbnail">
-                      <img
-                        src="images/cabins/marcellina.png"
-                        alt="Marcellina view 2"
-                      />
-                    </button>
-                    <button class="thumbnail">
-                      <img
-                        src="images/cabins/marcellina.png"
-                        alt="Marcellina view 3"
-                      />
-                    </button>
-                    <button class="thumbnail">
-                      <img
-                        src="images/cabins/marcellina.png"
-                        alt="Marcellina view 4"
-                      />
-                    </button>
+                    <p class="cabin-description-text">
+                      The Marcellina Cabin — the most luxurious log cabin at
+                      Kebler Corner. Perfect for families or friends, it
+                      features a full kitchen with bar, spacious living room,
+                      washer & dryer, and a private deck with mountain views.
+                    </p>
+
+                    <!-- Pricing Card -->
+                    <div class="cabin-pricing-card max-md:order-1">
+                      <div class="pricing-left">
+                        <span class="pricing-label">Rates from</span>
+                        <div class="pricing-amount">
+                          <span class="price-number">
+                            <span
+                              class="text-xl md:text-2xl font-medium text-green"
+                              >$</span
+                            >525</span
+                          >
+                          <span class="price-period">/ night</span>
+                        </div>
+                      </div>
+                      <a href="#book" class="btn btn-primary btn-cabin-card"
+                        >BOOK NOW</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="cabin-details-card-right">
+                    <div
+                      class="flex items-center flex-wrap gap-[3px] md:gap-md"
+                    >
+                      <span class="feature-icon-label">
+                        <img src="images/dog-icon.svg" alt="" />
+                        <p class="m-0">Pet Friendly</p>
+                      </span>
+                      <span class="feature-icon-label">
+                        <img src="images/bed-icon.svg" alt="" />
+                        <p class="m-0">
+                          Sleeps: <span class="text-green">6</span>
+                        </p>
+                      </span>
+                      <span class="feature-icon-label">
+                        <img src="images/bath-icon.svg" alt="" />
+                        <p class="m-0">
+                          Bathroom: <span class="text-green">1</span>
+                        </p>
+                      </span>
+                    </div>
+
+                    <div class="mt-5 md:mt-10">
+                      <!-- Kitchen Essentials -->
+                      <div class="amenity-section">
+                        <h4 class="amenity-title">Kitchen Essentials</h4>
+                        <p class="amenity-text">
+                          Dishwasher, microwave, toaster oven, full fridge and
+                          freezer, electric stove/oven, coffee pot, and bar top.
+                          All utensils, cookware and dinnerware provided.
+                        </p>
+                      </div>
+
+                      <div
+                        style="
+                          width: 100%;
+                          height: 1px;
+                          background-color: var(--color-gray-2);
+                          width: 72px;
+                          margin: var(--spacing-md) 0;
+                        "
+                      ></div>
+
+                      <!-- Additional Amenities -->
+                      <div class="amenity-section">
+                        <h4 class="amenity-title">Additional Amenities</h4>
+                        <p class="amenity-text">
+                          A living room area with large windows, wood burning
+                          stove and smart TV, dining table and bar seating, a
+                          large outdoor patio space with outdoor seating,
+                          propane grill, and fire pit. Access to campground
+                          WiFi.
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <!-- Cabin Details -->
-              <div class="cabin-details-card">
-                <div
-                  class="cabin-details-card-left max-md:order-2 w-full md:min-w-[460px] md:w-[460px] hidden-mobile"
-                >
+
+              <!-- Desktop Sidebar Item 2 -->
+              <div class="cabin-main-content">
+                <div class="cabin-details-card-mobile">
+                  <div class="cabin-details-header">
+                    <div class="cabin-details-header-left">
+                      <h2 class="cabin-title">THE COTTAGE</h2>
+                      <span class="cabin-badge">2-night minimum</span>
+                    </div>
+                  </div>
+
+                  <p class="cabin-description-text">
+                    The Marcellina Cabin — the most luxurious log cabin at
+                    Kebler Corner. Perfect for families or friends, it features
+                    a full kitchen with bar, spacious living room, washer &
+                    dryer, and a private deck with mountain views.
+                  </p>
+                </div>
+
+                <!-- Image Gallery -->
+                <div class="cabin-gallery @container">
+                  <!-- Main Image -->
+                  <div class="cabin-main-image" style="position: relative">
+                    <img
+                      src="images/cabins/marcellina.png"
+                      alt="Marcellina Cabin"
+                    />
+
+                    <!-- Thumbnail Gallery -->
+                    <div
+                      class="cabin-thumbnails-wrapper"
+                      style="
+                        position: absolute;
+                        top: var(--spacing-lg);
+                        left: var(--spacing-lg);
+                      "
+                    >
+                      <div class="cabin-thumbnails">
+                        <button class="thumbnail active">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 1"
+                          />
+                        </button>
+                        <button class="thumbnail">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 2"
+                          />
+                        </button>
+                        <button class="thumbnail">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 3"
+                          />
+                        </button>
+                        <button class="thumbnail">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 4"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Thumbnail Gallery -->
+                  <div class="cabin-thumbnails-wrapper-mobile overflow-hidden">
+                    <div class="cabin-thumbnails">
+                      <button class="thumbnail active">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 1"
+                        />
+                      </button>
+                      <button class="thumbnail">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 2"
+                        />
+                      </button>
+                      <button class="thumbnail">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 3"
+                        />
+                      </button>
+                      <button class="thumbnail">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 4"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Cabin Details -->
+                <div class="cabin-details-card">
+                  <div
+                    class="cabin-details-card-left max-md:order-2 w-full md:min-w-[460px] md:w-[460px] hidden-mobile"
+                  >
+                    <div class="cabin-details-header">
+                      <div class="cabin-details-header-left">
+                        <h2 class="cabin-title">THE LOG HOUSE</h2>
+                        <span class="cabin-badge">2-night minimum</span>
+                      </div>
+                    </div>
+
+                    <p class="cabin-description-text">
+                      The Marcellina Cabin — the most luxurious log cabin at
+                      Kebler Corner. Perfect for families or friends, it
+                      features a full kitchen with bar, spacious living room,
+                      washer & dryer, and a private deck with mountain views.
+                    </p>
+
+                    <!-- Pricing Card -->
+                    <div class="cabin-pricing-card max-md:order-1">
+                      <div class="pricing-left">
+                        <span class="pricing-label">Rates from</span>
+                        <div class="pricing-amount">
+                          <span class="price-number">
+                            <span
+                              class="text-xl md:text-2xl font-medium text-green"
+                              >$</span
+                            >525</span
+                          >
+                          <span class="price-period">/ night</span>
+                        </div>
+                      </div>
+                      <a href="#book" class="btn btn-primary btn-cabin-card"
+                        >BOOK NOW</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="cabin-details-card-right">
+                    <div
+                      class="flex items-center flex-wrap gap-[3px] md:gap-md"
+                    >
+                      <span class="feature-icon-label">
+                        <img src="images/dog-icon.svg" alt="" />
+                        <p class="m-0">Pet Friendly</p>
+                      </span>
+                      <span class="feature-icon-label">
+                        <img src="images/bed-icon.svg" alt="" />
+                        <p class="m-0">
+                          Sleeps: <span class="text-green">6</span>
+                        </p>
+                      </span>
+                      <span class="feature-icon-label">
+                        <img src="images/bath-icon.svg" alt="" />
+                        <p class="m-0">
+                          Bathroom: <span class="text-green">1</span>
+                        </p>
+                      </span>
+                    </div>
+
+                    <div class="mt-5 md:mt-10">
+                      <!-- Kitchen Essentials -->
+                      <div class="amenity-section">
+                        <h4 class="amenity-title">Kitchen Essentials</h4>
+                        <p class="amenity-text">
+                          Dishwasher, microwave, toaster oven, full fridge and
+                          freezer, electric stove/oven, coffee pot, and bar top.
+                          All utensils, cookware and dinnerware provided.
+                        </p>
+                      </div>
+
+                      <div
+                        style="
+                          width: 100%;
+                          height: 1px;
+                          background-color: var(--color-gray-2);
+                          width: 72px;
+                          margin: var(--spacing-md) 0;
+                        "
+                      ></div>
+
+                      <!-- Additional Amenities -->
+                      <div class="amenity-section">
+                        <h4 class="amenity-title">Additional Amenities</h4>
+                        <p class="amenity-text">
+                          A living room area with large windows, wood burning
+                          stove and smart TV, dining table and bar seating, a
+                          large outdoor patio space with outdoor seating,
+                          propane grill, and fire pit. Access to campground
+                          WiFi.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cabin-listing-layout mt-sm lg:mt-[120px]">
+            <!-- Left Sidebar - Cabin List -->
+            <aside class="cabin-sidebar">
+              <h3 class="sidebar-title">FULL CABINS</h3>
+              <ul class="cabin-menu">
+                <li class="cabin-menu-item active">THE LOG HOUSE</li>
+                <li class="cabin-menu-item">THE COTTAGE</li>
+              </ul>
+            </aside>
+
+            <div class="lg:space-y-[120px]">
+              <!-- Mobile Switch -->
+              <div class="cabin-listing-sidebar md:hidden mt-15 mb-lg">
+                <div class="flex items-center justify-between">
+                  <button
+                    class="text-white bg-green size-[30px] rounded-full flex justify-center items-center"
+                  >
+                    <svg
+                      width="9"
+                      height="14"
+                      viewBox="0 0 9 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.63268 0.713135L1.42578 6.81483L7.63268 12.9165"
+                        stroke="white"
+                        stroke-width="2"
+                      />
+                    </svg>
+                  </button>
+                  <h3 class="text-xl text-semibold uppercase">FULL CABINS</h3>
+                  <button
+                    class="text-white bg-green size-[30px] rounded-full flex justify-center items-center"
+                  >
+                    <svg
+                      width="9"
+                      height="14"
+                      viewBox="0 0 9 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0.699354 0.713135L6.90625 6.81483L0.699354 12.9165"
+                        stroke="white"
+                        stroke-width="2"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="flex justify-center mt-md gap-[5px]">
+                  <span class="size-2 rounded-full bg-green-50 active"></span>
+                  <span class="size-2 rounded-full bg-green-50"></span>
+                  <span class="size-2 rounded-full bg-green-50"></span>
+                  <span class="size-2 rounded-full bg-green-50"></span>
+                </div>
+              </div>
+
+              <!-- Desktop Sidebar Item 1 -->
+              <div class="cabin-main-content">
+                <div class="cabin-details-card-mobile">
                   <div class="cabin-details-header">
                     <div class="cabin-details-header-left">
                       <h2 class="cabin-title">THE LOG HOUSE</h2>
@@ -268,77 +616,371 @@
                     a full kitchen with bar, spacious living room, washer &
                     dryer, and a private deck with mountain views.
                   </p>
-
-                  <!-- Pricing Card -->
-                  <div class="cabin-pricing-card max-md:order-1">
-                    <div class="pricing-left">
-                      <span class="pricing-label">Rates from</span>
-                      <div class="pricing-amount">
-                        <span class="price-number">
-                          <span
-                            class="text-xl md:text-2xl font-medium text-green"
-                            >$</span
-                          >525</span
-                        >
-                        <span class="price-period">/ night</span>
-                      </div>
-                    </div>
-                    <a href="#book" class="btn btn-primary btn-cabin-card"
-                      >BOOK NOW</a
-                    >
-                  </div>
                 </div>
 
-                <div class="cabin-details-card-right">
-                  <div class="flex items-center flex-wrap gap-[3px] md:gap-md">
-                    <span class="feature-icon-label">
-                      <img src="images/dog-icon.svg" alt="" />
-                      <p class="m-0">Pet Friendly</p>
-                    </span>
-                    <span class="feature-icon-label">
-                      <img src="images/bed-icon.svg" alt="" />
-                      <p class="m-0">
-                        Sleeps: <span class="text-green">6</span>
-                      </p>
-                    </span>
-                    <span class="feature-icon-label">
-                      <img src="images/bath-icon.svg" alt="" />
-                      <p class="m-0">
-                        Bathroom: <span class="text-green">1</span>
-                      </p>
-                    </span>
+                <!-- Image Gallery -->
+                <div class="cabin-gallery @container">
+                  <!-- Main Image -->
+                  <div class="cabin-main-image" style="position: relative">
+                    <img
+                      src="images/cabins/marcellina.png"
+                      alt="Marcellina Cabin"
+                    />
+
+                    <!-- Thumbnail Gallery -->
+                    <div
+                      class="cabin-thumbnails-wrapper"
+                      style="
+                        position: absolute;
+                        top: var(--spacing-lg);
+                        left: var(--spacing-lg);
+                      "
+                    >
+                      <div class="cabin-thumbnails">
+                        <button class="thumbnail active">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 1"
+                          />
+                        </button>
+                        <button class="thumbnail">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 2"
+                          />
+                        </button>
+                        <button class="thumbnail">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 3"
+                          />
+                        </button>
+                        <button class="thumbnail">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 4"
+                          />
+                        </button>
+                      </div>
+                    </div>
                   </div>
 
-                  <div class="mt-5 md:mt-10">
-                    <!-- Kitchen Essentials -->
-                    <div class="amenity-section">
-                      <h4 class="amenity-title">Kitchen Essentials</h4>
-                      <p class="amenity-text">
-                        Dishwasher, microwave, toaster oven, full fridge and
-                        freezer, electric stove/oven, coffee pot, and bar top.
-                        All utensils, cookware and dinnerware provided.
-                      </p>
+                  <!-- Thumbnail Gallery -->
+                  <div class="cabin-thumbnails-wrapper-mobile overflow-hidden">
+                    <div class="cabin-thumbnails">
+                      <button class="thumbnail active">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 1"
+                        />
+                      </button>
+                      <button class="thumbnail">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 2"
+                        />
+                      </button>
+                      <button class="thumbnail">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 3"
+                        />
+                      </button>
+                      <button class="thumbnail">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 4"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Cabin Details -->
+                <div class="cabin-details-card">
+                  <div
+                    class="cabin-details-card-left max-md:order-2 w-full md:min-w-[460px] md:w-[460px] hidden-mobile"
+                  >
+                    <div class="cabin-details-header">
+                      <div class="cabin-details-header-left">
+                        <h2 class="cabin-title">THE LOG HOUSE</h2>
+                        <span class="cabin-badge">2-night minimum</span>
+                      </div>
                     </div>
 
-                    <div
-                      style="
-                        width: 100%;
-                        height: 1px;
-                        background-color: var(--color-gray-2);
-                        width: 72px;
-                        margin: var(--spacing-md) 0;
-                      "
-                    ></div>
+                    <p class="cabin-description-text">
+                      The Marcellina Cabin — the most luxurious log cabin at
+                      Kebler Corner. Perfect for families or friends, it
+                      features a full kitchen with bar, spacious living room,
+                      washer & dryer, and a private deck with mountain views.
+                    </p>
 
-                    <!-- Additional Amenities -->
-                    <div class="amenity-section">
-                      <h4 class="amenity-title">Additional Amenities</h4>
-                      <p class="amenity-text">
-                        A living room area with large windows, wood burning
-                        stove and smart TV, dining table and bar seating, a
-                        large outdoor patio space with outdoor seating, propane
-                        grill, and fire pit. Access to campground WiFi.
-                      </p>
+                    <!-- Pricing Card -->
+                    <div class="cabin-pricing-card max-md:order-1">
+                      <div class="pricing-left">
+                        <span class="pricing-label">Rates from</span>
+                        <div class="pricing-amount">
+                          <span class="price-number">
+                            <span
+                              class="text-xl md:text-2xl font-medium text-green"
+                              >$</span
+                            >525</span
+                          >
+                          <span class="price-period">/ night</span>
+                        </div>
+                      </div>
+                      <a href="#book" class="btn btn-primary btn-cabin-card"
+                        >BOOK NOW</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="cabin-details-card-right">
+                    <div
+                      class="flex items-center flex-wrap gap-[3px] md:gap-md"
+                    >
+                      <span class="feature-icon-label">
+                        <img src="images/dog-icon.svg" alt="" />
+                        <p class="m-0">Pet Friendly</p>
+                      </span>
+                      <span class="feature-icon-label">
+                        <img src="images/bed-icon.svg" alt="" />
+                        <p class="m-0">
+                          Sleeps: <span class="text-green">6</span>
+                        </p>
+                      </span>
+                      <span class="feature-icon-label">
+                        <img src="images/bath-icon.svg" alt="" />
+                        <p class="m-0">
+                          Bathroom: <span class="text-green">1</span>
+                        </p>
+                      </span>
+                    </div>
+
+                    <div class="mt-5 md:mt-10">
+                      <!-- Kitchen Essentials -->
+                      <div class="amenity-section">
+                        <h4 class="amenity-title">Kitchen Essentials</h4>
+                        <p class="amenity-text">
+                          Dishwasher, microwave, toaster oven, full fridge and
+                          freezer, electric stove/oven, coffee pot, and bar top.
+                          All utensils, cookware and dinnerware provided.
+                        </p>
+                      </div>
+
+                      <div
+                        style="
+                          width: 100%;
+                          height: 1px;
+                          background-color: var(--color-gray-2);
+                          width: 72px;
+                          margin: var(--spacing-md) 0;
+                        "
+                      ></div>
+
+                      <!-- Additional Amenities -->
+                      <div class="amenity-section">
+                        <h4 class="amenity-title">Additional Amenities</h4>
+                        <p class="amenity-text">
+                          A living room area with large windows, wood burning
+                          stove and smart TV, dining table and bar seating, a
+                          large outdoor patio space with outdoor seating,
+                          propane grill, and fire pit. Access to campground
+                          WiFi.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desktop Sidebar Item 2 -->
+              <div class="cabin-main-content">
+                <div class="cabin-details-card-mobile">
+                  <div class="cabin-details-header">
+                    <div class="cabin-details-header-left">
+                      <h2 class="cabin-title">THE COTTAGE</h2>
+                      <span class="cabin-badge">2-night minimum</span>
+                    </div>
+                  </div>
+
+                  <p class="cabin-description-text">
+                    The Marcellina Cabin — the most luxurious log cabin at
+                    Kebler Corner. Perfect for families or friends, it features
+                    a full kitchen with bar, spacious living room, washer &
+                    dryer, and a private deck with mountain views.
+                  </p>
+                </div>
+
+                <!-- Image Gallery -->
+                <div class="cabin-gallery @container">
+                  <!-- Main Image -->
+                  <div class="cabin-main-image" style="position: relative">
+                    <img
+                      src="images/cabins/marcellina.png"
+                      alt="Marcellina Cabin"
+                    />
+
+                    <!-- Thumbnail Gallery -->
+                    <div
+                      class="cabin-thumbnails-wrapper"
+                      style="
+                        position: absolute;
+                        top: var(--spacing-lg);
+                        left: var(--spacing-lg);
+                      "
+                    >
+                      <div class="cabin-thumbnails">
+                        <button class="thumbnail active">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 1"
+                          />
+                        </button>
+                        <button class="thumbnail">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 2"
+                          />
+                        </button>
+                        <button class="thumbnail">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 3"
+                          />
+                        </button>
+                        <button class="thumbnail">
+                          <img
+                            src="images/cabins/marcellina.png"
+                            alt="Marcellina view 4"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Thumbnail Gallery -->
+                  <div class="cabin-thumbnails-wrapper-mobile overflow-hidden">
+                    <div class="cabin-thumbnails">
+                      <button class="thumbnail active">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 1"
+                        />
+                      </button>
+                      <button class="thumbnail">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 2"
+                        />
+                      </button>
+                      <button class="thumbnail">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 3"
+                        />
+                      </button>
+                      <button class="thumbnail">
+                        <img
+                          src="images/cabins/marcellina.png"
+                          alt="Marcellina view 4"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Cabin Details -->
+                <div class="cabin-details-card">
+                  <div
+                    class="cabin-details-card-left max-md:order-2 w-full md:min-w-[460px] md:w-[460px] hidden-mobile"
+                  >
+                    <div class="cabin-details-header">
+                      <div class="cabin-details-header-left">
+                        <h2 class="cabin-title">THE LOG HOUSE</h2>
+                        <span class="cabin-badge">2-night minimum</span>
+                      </div>
+                    </div>
+
+                    <p class="cabin-description-text">
+                      The Marcellina Cabin — the most luxurious log cabin at
+                      Kebler Corner. Perfect for families or friends, it
+                      features a full kitchen with bar, spacious living room,
+                      washer & dryer, and a private deck with mountain views.
+                    </p>
+
+                    <!-- Pricing Card -->
+                    <div class="cabin-pricing-card max-md:order-1">
+                      <div class="pricing-left">
+                        <span class="pricing-label">Rates from</span>
+                        <div class="pricing-amount">
+                          <span class="price-number">
+                            <span
+                              class="text-xl md:text-2xl font-medium text-green"
+                              >$</span
+                            >525</span
+                          >
+                          <span class="price-period">/ night</span>
+                        </div>
+                      </div>
+                      <a href="#book" class="btn btn-primary btn-cabin-card"
+                        >BOOK NOW</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="cabin-details-card-right">
+                    <div
+                      class="flex items-center flex-wrap gap-[3px] md:gap-md"
+                    >
+                      <span class="feature-icon-label">
+                        <img src="images/dog-icon.svg" alt="" />
+                        <p class="m-0">Pet Friendly</p>
+                      </span>
+                      <span class="feature-icon-label">
+                        <img src="images/bed-icon.svg" alt="" />
+                        <p class="m-0">
+                          Sleeps: <span class="text-green">6</span>
+                        </p>
+                      </span>
+                      <span class="feature-icon-label">
+                        <img src="images/bath-icon.svg" alt="" />
+                        <p class="m-0">
+                          Bathroom: <span class="text-green">1</span>
+                        </p>
+                      </span>
+                    </div>
+
+                    <div class="mt-5 md:mt-10">
+                      <!-- Kitchen Essentials -->
+                      <div class="amenity-section">
+                        <h4 class="amenity-title">Kitchen Essentials</h4>
+                        <p class="amenity-text">
+                          Dishwasher, microwave, toaster oven, full fridge and
+                          freezer, electric stove/oven, coffee pot, and bar top.
+                          All utensils, cookware and dinnerware provided.
+                        </p>
+                      </div>
+
+                      <div
+                        style="
+                          width: 100%;
+                          height: 1px;
+                          background-color: var(--color-gray-2);
+                          width: 72px;
+                          margin: var(--spacing-md) 0;
+                        "
+                      ></div>
+
+                      <!-- Additional Amenities -->
+                      <div class="amenity-section">
+                        <h4 class="amenity-title">Additional Amenities</h4>
+                        <p class="amenity-text">
+                          A living room area with large windows, wood burning
+                          stove and smart TV, dining table and bar seating, a
+                          large outdoor patio space with outdoor seating,
+                          propane grill, and fire pit. Access to campground
+                          WiFi.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -449,16 +449,91 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // =====================================================
-  // Header Scroll Effect
+  // Cabin Sidebar Active State on Scroll
   // =====================================================
-  let lastScroll = 0;
-  //   const header = document.querySelector(".header");
+  const cabinMenuItems = document.querySelectorAll(".cabin-menu-item");
+  const cabinMainContents = document.querySelectorAll(".cabin-main-content");
 
-  window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset;
+  if (cabinMenuItems.length > 0 && cabinMainContents.length > 0) {
+    let isScrolling = false;
 
-    lastScroll = currentScroll;
-  });
+    // Create intersection observer to track visible cabin sections
+    const observerOptions = {
+      root: null,
+      rootMargin: "-30% 0px -50% 0px", // Trigger when section is in upper-middle viewport
+      threshold: [0, 0.25, 0.5, 0.75, 1],
+    };
+
+    const cabinObserver = new IntersectionObserver((entries) => {
+      if (isScrolling) return; // Skip updates during programmatic scrolling
+
+      // Find the section with highest intersection ratio
+      let maxRatio = 0;
+      let activeIndex = -1;
+
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+          maxRatio = entry.intersectionRatio;
+          activeIndex = Array.from(cabinMainContents).indexOf(entry.target);
+        }
+      });
+
+      // If we found an active section, update sidebar
+      if (activeIndex !== -1) {
+        cabinMenuItems.forEach((item, index) => {
+          if (index === activeIndex) {
+            item.classList.add("active");
+          } else {
+            item.classList.remove("active");
+          }
+        });
+      }
+    }, observerOptions);
+
+    // Observe all cabin sections
+    cabinMainContents.forEach((section) => {
+      cabinObserver.observe(section);
+    });
+
+    // Handle click on sidebar items to scroll to corresponding section
+    cabinMenuItems.forEach((item, index) => {
+      item.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        // Set flag to prevent observer from updating during scroll
+        isScrolling = true;
+
+        // Remove active from all items
+        cabinMenuItems.forEach((menuItem) => {
+          menuItem.classList.remove("active");
+        });
+
+        // Add active to clicked item
+        item.classList.add("active");
+
+        // Scroll to corresponding cabin section
+        if (cabinMainContents[index]) {
+          const headerOffset = 100;
+          const elementPosition =
+            cabinMainContents[index].getBoundingClientRect().top;
+          const offsetPosition =
+            elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+
+          // Re-enable observer after scroll completes
+          setTimeout(() => {
+            isScrolling = false;
+          }, 1000);
+        } else {
+          isScrolling = false;
+        }
+      });
+    });
+  }
 
   // =====================================================
   // Cabin Gallery Thumbnail Slider
