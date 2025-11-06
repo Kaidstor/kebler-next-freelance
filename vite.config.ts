@@ -25,7 +25,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
-        book: resolve(__dirname, "book.html"),
         campsites: resolve(__dirname, "campsites.html"),
         rvSites: resolve(__dirname, "rv-sites.html"),
       },
