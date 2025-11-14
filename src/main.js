@@ -44,18 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Close drawer when clicking overlay
-    document.addEventListener("click", (e) => {
-      if (
-        e.target === document.body.querySelector("body::before") ||
-        (e.target === mobileDrawer && !e.target.contains(hamburgerMenu))
-      ) {
-        hamburgerMenu.classList.remove("active");
-        mobileDrawer.classList.remove("open");
-        document.body.classList.remove("drawer-open");
-      }
-    });
-
     // Close drawer on Escape key
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && mobileDrawer.classList.contains("open")) {
