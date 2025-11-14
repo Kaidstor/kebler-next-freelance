@@ -453,6 +453,45 @@ document.addEventListener("DOMContentLoaded", () => {
       let isScrolling = false;
       let currentActiveIndex = 0;
 
+      // Generate mobile indicators dynamically
+      mobileSidebars.forEach((sidebar) => {
+        // Находим родительский контейнер sidebar
+        const parentLayout = sidebar.closest(".cabin-listing-layout");
+        if (!parentLayout) return;
+
+        // Считаем количество cabin-main-content в родителе
+        const contentCount = parentLayout.querySelectorAll(
+          ".cabin-main-content"
+        ).length;
+
+        // Находим последний div в sidebar (контейнер для индикаторов)
+        const allDivs = sidebar.querySelectorAll("div");
+        const lastDiv = allDivs[allDivs.length - 1];
+        if (!lastDiv) return;
+
+        // Если только 1 элемент - удаляем/скрываем блок с индикаторами
+        if (contentCount <= 1) {
+          lastDiv.style.display = "none";
+          return;
+        }
+
+        // Показываем блок если он был скрыт
+        lastDiv.style.display = "";
+
+        // Очищаем существующие индикаторы
+        lastDiv.innerHTML = "";
+
+        // Создаем нужное количество индикаторов
+        for (let i = 0; i < contentCount; i++) {
+          const indicator = document.createElement("span");
+          indicator.className = "size-2 rounded-full bg-green-50";
+          if (i === 0) {
+            indicator.classList.add("active");
+          }
+          lastDiv.appendChild(indicator);
+        }
+      });
+
       // Determine max index based on available elements within this layout
       const maxIndex = Math.min(
         cabinMenuItems.length - 1,
